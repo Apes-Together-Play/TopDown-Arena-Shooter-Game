@@ -13,10 +13,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        
         var movement = new Vector2(horizontal, vertical);
-        _rb2d.velocity = movement * speed ;
+        _rb2d.velocity = movement * speed;
     }
 }

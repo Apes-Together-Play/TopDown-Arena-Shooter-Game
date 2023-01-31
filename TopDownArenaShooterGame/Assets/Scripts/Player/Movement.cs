@@ -2,7 +2,7 @@
 
 namespace Player
 {
-    public class PlayerMovement : MonoBehaviour
+    public class Movement : MonoBehaviour
     {
         [SerializeField] private float speed = 10f;
 

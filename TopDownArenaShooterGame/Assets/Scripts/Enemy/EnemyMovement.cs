@@ -1,8 +1,6 @@
-﻿
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace DefaultNamespace
+namespace Enemy
 {
     public class EnemyMovement : MonoBehaviour
     {

@@ -18,12 +18,15 @@ namespace Enemy
         
         private void Update()
         {
-            Vector2 direction = (target.position - transform.position).normalized;
+            Vector2 direction;
             float distance = Vector2.Distance(transform.position, target.transform.position);
            
-            if (distance <= minD) direction = (transform.position - target.position).normalized;
-            else if (distance >= maxD) direction = (target.position -transform.position).normalized;
-            else direction *= 0;
+            if (distance <= minD) 
+                direction = (transform.position - target.position).normalized;
+            else if (distance >= maxD) 
+                direction = (target.position -transform.position).normalized;
+            else 
+                direction = Vector2.zero;
 
             _rigidbody2D.velocity = (direction)*speed;
         }

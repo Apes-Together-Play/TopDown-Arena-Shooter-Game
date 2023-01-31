@@ -1,9 +1,8 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Player
 {
-    public class Behaviour : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         private void OnTriggerEnter2D(Collider2D col)
         {

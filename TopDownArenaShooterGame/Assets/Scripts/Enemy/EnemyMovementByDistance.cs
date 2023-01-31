@@ -18,6 +18,11 @@ namespace Enemy
         
         private void Update()
         {
+            Move();
+        }
+
+        private void Move()
+        {
             Vector2 direction;
             float distance = Vector2.Distance(transform.position, target.transform.position);
            

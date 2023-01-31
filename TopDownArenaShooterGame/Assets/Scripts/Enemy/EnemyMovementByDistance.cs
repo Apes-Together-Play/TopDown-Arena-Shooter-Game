@@ -8,7 +8,6 @@ namespace Enemy
         [SerializeField] private Transform target;
         [SerializeField] private float speed;
         private Rigidbody2D _rigidbody2D;
-        private bool forward = true;
         [SerializeField] private float minD;
         [SerializeField] private float maxD;
         

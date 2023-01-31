@@ -11,6 +11,8 @@ namespace Enemy
         [SerializeField] private Transform target;
         [SerializeField] private float speed;
         private Rigidbody2D _rigidbody2D;
+        [HideInInspector] public bool isTriggered;
+        [SerializeField] private float slowSpeedConst = 2f;
         
         private void Start()
         {
@@ -20,14 +22,8 @@ namespace Enemy
 
         private void Update()
         {
-            Vector2 speedVector;
-            Vector2 distanceVector = (target.position - transform.position);
-            
-            Vector2 direction = distanceVector.normalized;
-            speedVector = direction * speed;
-            
-            
-            _rigidbody2D.velocity = speedVector;
+            Vector2 direction = (target.position - transform.position).normalized;
+            _rigidbody2D.velocity = (isTriggered) ? direction * slowSpeedConst : direction * speed;
         }
     }
 }

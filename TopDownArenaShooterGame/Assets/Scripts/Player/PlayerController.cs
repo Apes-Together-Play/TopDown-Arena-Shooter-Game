@@ -29,8 +29,13 @@ namespace Player
             if (col.CompareTag("Enemy"))
             {
                 Debug.Log(col.gameObject.name);
-                //col.gameObject.GetComponent<EnemyMovement>().Speed = 0;
+                col.gameObject.GetComponent<EnemyMovement>().isTriggered = true;
             }
+        }
+
+        private void OnTriggerExit2D(Collider2D col)
+        {
+            col.gameObject.GetComponent<EnemyMovement>().isTriggered = false;
         }
     }
 }

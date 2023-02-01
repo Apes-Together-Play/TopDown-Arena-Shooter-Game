@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Bullet;
 using Enemy;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ namespace Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float speed = 10f;
+        [SerializeField] private BulletController bulletPrefab;
+        [SerializeField] private Camera mainCamera;
 
         private Rigidbody2D _rb2d;
 
@@ -56,8 +59,12 @@ namespace Player
         {
             while (true)
             {
-                Debug.Log(Input.mousePosition);
-                yield return new WaitForSeconds(10);
+                Vector2 mousePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+                var bulletDirection = mousePosition.normalized;
+                var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                //bullet.layerMask =  (1<< 8) | (1<<6);
+                bullet.Fire(bulletDirection);
+                yield return new WaitForSeconds(0.001f);
             }
         }
     }

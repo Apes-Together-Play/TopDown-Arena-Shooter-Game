@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace;
+using UnityEngine;
 
 namespace Enemy
 {
-    public class EnemyMovementByDistance : MonoBehaviour
+    public class EnemyMovementByDistance : MonoBehaviour, IMortal
     {
         
         [SerializeField] private Transform target;
@@ -34,6 +35,11 @@ namespace Enemy
                 direction = Vector2.zero;
 
             _rigidbody2D.velocity = (direction)*speed;
+        }
+
+        public void TakeDamage(float damage, float knockback)
+        {
+            Debug.Log(damage);
         }
     }
 }

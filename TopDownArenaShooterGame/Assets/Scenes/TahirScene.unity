@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 255946279}
   - component: {fileID: 255946281}
   - component: {fileID: 255946280}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,6 +497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  bulletPrefab: {fileID: 5329934471069052929, guid: 92d3313c881839a44896f9aa2ca80dbb, type: 3}
+  mainCamera: {fileID: 1248032182}
 --- !u!1 &309544658
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +510,7 @@ GameObject:
   - component: {fileID: 309544659}
   - component: {fileID: 309544661}
   - component: {fileID: 309544660}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +650,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 545547749}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,7 +745,7 @@ GameObject:
   - component: {fileID: 778895222}
   - component: {fileID: 778895224}
   - component: {fileID: 778895223}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1602,7 +1604,7 @@ GameObject:
   - component: {fileID: 1428529453}
   - component: {fileID: 1428529455}
   - component: {fileID: 1428529454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}

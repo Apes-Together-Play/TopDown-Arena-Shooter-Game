@@ -1,9 +1,10 @@
-﻿using Player;
+﻿using DefaultNamespace;
+using Player;
 using UnityEngine;
 
 namespace Enemy
 {
-    public class EnemyMovement : MonoBehaviour
+    public class EnemyMovement : MonoBehaviour, IMortal
     {
         [SerializeField] private Transform target;
         private Rigidbody2D _rigidbody2D;
@@ -34,6 +35,11 @@ namespace Enemy
                 _rigidbody2D.velocity = direction * slowSpeed;
             else
                 _rigidbody2D.velocity = direction * normalSpeed;
+        }
+
+        public void TakeDamage(float damage, float knockback)
+        {
+            Debug.Log(damage);
         }
     }
 }

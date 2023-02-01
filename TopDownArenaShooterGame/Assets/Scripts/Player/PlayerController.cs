@@ -26,26 +26,6 @@ namespace Player
             Move();
         }
         
-        private void OnTriggerStay2D(Collider2D col)
-        {
-            if (col.CompareTag("Enemy"))
-            {
-                var enemyMovement = col.gameObject.GetComponent<EnemyMovement>();
-                if(enemyMovement) 
-                    enemyMovement.isTriggered = true;
-            }
-        }
-
-        private void OnTriggerExit2D(Collider2D col)
-        {
-            if (col.CompareTag("Enemy"))
-            {
-                var enemyMovement = col.gameObject.GetComponent<EnemyMovement>();
-                if(enemyMovement) 
-                    enemyMovement.isTriggered = false;
-            }
-        }
-        
         private void Move()
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
@@ -64,7 +44,7 @@ namespace Player
                 var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 //bullet.layerMask =  (1<< 8) | (1<<6);
                 bullet.Fire(bulletDirection);
-                yield return new WaitForSeconds(0.001f);
+                yield return new WaitForSeconds(0.1f);
             }
         }
     }

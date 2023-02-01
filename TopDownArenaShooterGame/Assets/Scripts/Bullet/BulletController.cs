@@ -8,7 +8,6 @@ namespace Bullet
     public class BulletController : MonoBehaviour
     {
         public LayerMask layerMask;
-        //public string[] tag;
         public float speed;
         public float damage;
         public float knockback;
@@ -25,7 +24,6 @@ namespace Bullet
             var layer = col.gameObject.layer;
             if (layerMask == (layerMask | (1 << layer)))
             {
-                Debug.Log("AAA");
                 Destroy(gameObject);
                 IMortal mortal = col.GetComponent<IMortal>();
                 mortal?.TakeDamage(damage, knockback); // thank to Rider

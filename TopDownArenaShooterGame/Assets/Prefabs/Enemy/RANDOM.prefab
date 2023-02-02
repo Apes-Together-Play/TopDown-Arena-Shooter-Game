@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091505721295808432}
   - component: {fileID: 4742910587922109206}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: EnemyBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4127920122223623470}
   - component: {fileID: 4127920122223623471}
   - component: {fileID: 5844466558555548590}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: RANDOM
   m_TagString: Enemy
   m_Icon: {fileID: 0}

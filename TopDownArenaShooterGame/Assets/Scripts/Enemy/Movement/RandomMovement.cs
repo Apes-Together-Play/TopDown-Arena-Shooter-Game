@@ -28,8 +28,6 @@ namespace Enemy.Movement
         private void OnTriggerStay2D(Collider2D col)
         {
             if (col.gameObject.CompareTag("Wall")) ChangeDirection();
-            if(col.gameObject.CompareTag("Enemy")) ChangeDirection();
-            
         }
     }
 }

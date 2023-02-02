@@ -362,8 +362,8 @@ GameObject:
   - component: {fileID: 270984818}
   - component: {fileID: 270984819}
   - component: {fileID: 270984820}
-  m_Layer: 0
-  m_Name: PlayerBody
+  m_Layer: 7
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -686,8 +686,8 @@ GameObject:
   m_Component:
   - component: {fileID: 735898913}
   - component: {fileID: 735898915}
-  m_Layer: 7
-  m_Name: Player
+  m_Layer: 9
+  m_Name: PlayerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

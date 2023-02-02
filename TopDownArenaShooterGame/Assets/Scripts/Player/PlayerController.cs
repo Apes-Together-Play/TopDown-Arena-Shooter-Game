@@ -3,15 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Bullet;
 using Enemy;
+using Fire;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float speed = 10f;
-        [SerializeField] private BulletController bulletPrefab;
-        [SerializeField] private Camera mainCamera;
+
+        private Weapon _weapon;
 
         private Rigidbody2D _rb2d;
 
@@ -40,10 +42,14 @@ namespace Player
             while (true)
             {
                 Vector2 mousePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
-                var bulletDirection = mousePosition.normalized;
-                var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                //bullet.layerMask =  (1<< 8) | (1<<6);
-                bullet.Fire(bulletDirection);
+                var fireData = new FireData();
+                _weapon.Fire(fireData);
+                
+                // var bulletDirection = mousePosition.normalized;
+                // var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                // //bullet.layerMask =  (1<< 8) | (1<<6);
+                // bullet.Fire(bulletDirection);
+                
                 yield return new WaitForSeconds(0.1f);
             }
         }

@@ -43,7 +43,7 @@ namespace Player
             {
                 Vector2 mousePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
                 var fireData = new FireData();
-                _weapon.Fire(fireData);
+                //_weapon.Fire(fireData);
                 
                 // var bulletDirection = mousePosition.normalized;
                 // var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);

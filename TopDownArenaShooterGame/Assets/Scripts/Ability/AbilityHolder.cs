@@ -8,6 +8,7 @@ namespace Ability
         [SerializeField] private Ability ability;
         private float _cooldownTime;
         private float _acviteTime;
+        
         [SerializeField] private KeyCode key;
         
         enum AbilityState

@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Bullet;
-using Enemy;
+﻿using System.Collections;
 using Fire;
+using Stats;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] private StatManager statManager; // TODO move to the normal
         [SerializeField] private float speed = 10f;
 
         private Weapon _weapon;
-
         private Rigidbody2D _rb2d;
 
         private void Start()

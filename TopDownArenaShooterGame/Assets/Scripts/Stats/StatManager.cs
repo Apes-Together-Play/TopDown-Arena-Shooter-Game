@@ -1,54 +1,36 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using Stats;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class StatManager : MonoBehaviour
+namespace Stats
 {
-    
-    [SerializeField] private Dictionary<Stat, float> stats = new Dictionary<Stat, float>();
-    
-    private List<StatsUpgrade> appliedUpgrades = new List<StatsUpgrade>();
-    
-    public void AddUpgrade(StatsUpgrade upgrade)
+    [Serializable]
+    public class StatManager
     {
-        appliedUpgrades.Add(upgrade);
-        
-        foreach (var statUpgrade in upgrade.upgradeToApply)
+        [SerializeField] private List<StatData> stats;
+
+        private readonly List<StatsUpgrade> appliedUpgrades = new();
+    
+        public void AddUpgrade(StatsUpgrade upgrade)
         {
-            stats[statUpgrade.Key] += statUpgrade.Value;
+            appliedUpgrades.Add(upgrade);
+        
+            foreach (var statUpgrade in upgrade.upgradeToApply)
+            {
+                foreach (var statData in stats.Where(statData => statData.statType == statUpgrade.statType))
+                {
+                    statData.value += statUpgrade.value; // TODO can be negative 
+                    return;
+                }
+
+                stats.Add(new StatData
+                {
+                    statType = statUpgrade.statType,
+                    value = statUpgrade.value // TODO can be negative 
+                }); 
+            }
         }
     }
-}
-
-public enum Stat
-{
-    hp,
-    hpRegen,
-    damage,
-    attackSpeed,
-    lifeSteal,
-    critChange,
-    critDamage,
-    armor,
-    dodge,
-    knockback,
-    damageReflection,
-    speed,
-    luck,
-    harvesting,
-    hpRate,
-    hpRegenRate,
-    damageRate,
-    attackSpeedRate,
-    lifeStealRate,
-    critChangeRate,
-    critDamageRate,
-    armorRate,
-    dodgeRate,
-    knockbackRate,
-    damageReflectionRate,
-    speedRate,
-    luckRate,
-    harvestingRate
 }

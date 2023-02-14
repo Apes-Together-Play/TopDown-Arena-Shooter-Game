@@ -496,9 +496,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a124c10326404791a6f988896ddbf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statManager:
+    stats: []
   speed: 10
-  bulletPrefab: {fileID: 5329934471069052929, guid: 92d3313c881839a44896f9aa2ca80dbb, type: 3}
-  mainCamera: {fileID: 1248032182}
+  _weapon: {fileID: 0}
+  _rb2d: {fileID: 0}
 --- !u!1 &309544658
 GameObject:
   m_ObjectHideFlags: 0

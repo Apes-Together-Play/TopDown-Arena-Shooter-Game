@@ -14,7 +14,7 @@ namespace Ability
         public override void Active(GameObject parent)
         {
             Rigidbody2D rigidbody = parent.GetComponent<Rigidbody2D>();
-            PlayerController player = parent.GetComponent<PlayerController>();
+            //Player.Player player = parent.GetComponent<Player.Player>();
             
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");

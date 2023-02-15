@@ -9,5 +9,7 @@ namespace Ability
         public float activeTime;
 
         public abstract void Active(GameObject parent);
+
+        public abstract void DeActive(GameObject parent);
     }
 }

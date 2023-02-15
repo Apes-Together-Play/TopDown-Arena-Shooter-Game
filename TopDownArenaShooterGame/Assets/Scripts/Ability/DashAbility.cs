@@ -1,3 +1,4 @@
+using System;
 using Enemy.Movement;
 using Player;
 using UnityEngine;
@@ -11,21 +12,19 @@ namespace Ability
      */
     {
         [SerializeField] private float dashVelocity;
+
+        public static event Action<float> OnDashAbility;
+
         public override void Active(GameObject parent)
         {
-            Rigidbody2D rigidbody = parent.GetComponent<Rigidbody2D>();
-            //Player.Player player = parent.GetComponent<Player.Player>();
             
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
-            
-            var movement = new Vector2(horizontal, vertical);
-            movement.Normalize();
+            OnDashAbility?.Invoke(dashVelocity);
 
-            rigidbody.velocity = dashVelocity * movement;
+        }
 
-
-            //rigidbody.AddForce(movement * dashVelocity, ForceMode.Impulse);
+        public override void DeActive(GameObject parent)
+        {
+            OnDashAbility?.Invoke(1/dashVelocity);
         }
     }
 }

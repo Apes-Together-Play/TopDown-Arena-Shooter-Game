@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Ability;
 using Fire;
 using Stats;
 using UnityEngine;
@@ -10,41 +11,40 @@ namespace Player
     public class Player : MonoBehaviour
     {
         [SerializeField] private StatManager statManager;
-        private PlayerMovement movement; 
+        public PlayerMovement movement; 
         private Rigidbody2D rb2d;
 
         [SerializeField] private KeyCode key;
+
         
 
+        
+        
         private void Start()
         {
             rb2d = GetComponent<Rigidbody2D>();
             movement = new PlayerMovement(rb2d);
-            StatManager.OnSpeedUpgrade += movement.setSpeed;
-            //TODO edit movement.Speed 
+            
+            StatManager.OnSpeedUpgrade += movement.SetSpeed;
+            DashAbility.OnDashAbility += movement.SetSpeedByMultiply;
+
+            // will change in the future
+            StatsUpgrade baseStats = ScriptableObject.CreateInstance<StatsUpgrade>();
+            baseStats.unitsToUpgrade.Add(this.statManager);
+            baseStats.upgradeToApply.Add(new StatData
+            {
+                statType = StatType.speed,
+                value = 11f
+            }); 
+            
+            baseStats.DoUpgrade();
+
             //StartCoroutine(Fire());
         }
 
         private void FixedUpdate()
         { 
             movement.Move();
-        }
-
-        // this event is for trying whether Observer pattern and stat system works well or not.
-        private void OnMouseDown()
-        {
-            Debug.Log("we are here right now");
-            StatsUpgrade trying = new StatsUpgrade();
-            
-            trying.unitsToUpgrade.Add(this.statManager);
-            trying.upgradeToApply.Add(new StatData
-            {
-                statType = StatType.speed,
-                value = 10f
-            }); 
-            
-            trying.DoUpgrade();
-
         }
 
         private IEnumerator Fire()

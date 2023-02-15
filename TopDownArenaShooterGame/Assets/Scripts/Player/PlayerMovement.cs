@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Fire;
 using Stats;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player
@@ -8,13 +9,23 @@ namespace Player
     public class PlayerMovement
     {
         private readonly Rigidbody2D rb2d;
-        //public float Speed { private get; set;}
-
         private float speed;
 
-        public void setSpeed(float speed)
+        public void SetSpeed(float speed)
         {
             this.speed = speed;
+            
+        }
+
+        public void SetSpeedByMultiply(float increaseConstant)
+        {
+            speed *= increaseConstant;
+            Debug.Log(speed);
+        }
+
+        public float GetSpeed()
+        {
+            return speed;
         }
         
 

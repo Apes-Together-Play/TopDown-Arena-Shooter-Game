@@ -42,6 +42,7 @@ namespace Ability
                     }
                     else
                     {
+                        ability.DeActive(gameObject);
                         _state = AbilityState.cooldown;
                         _cooldownTime = ability.cooldownTime;
                     }
@@ -50,7 +51,7 @@ namespace Ability
                 case AbilityState.cooldown:
                     if (_cooldownTime > 0)
                     {
-                        _cooldownTime -= _cooldownTime;
+                        _cooldownTime -= Time.deltaTime;
                     }
                     else
                     {

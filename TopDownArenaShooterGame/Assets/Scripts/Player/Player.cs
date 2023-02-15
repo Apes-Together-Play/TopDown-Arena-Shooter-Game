@@ -45,9 +45,6 @@ namespace Player
             
             trying.DoUpgrade();
 
-
-
-
         }
 
         private IEnumerator Fire()

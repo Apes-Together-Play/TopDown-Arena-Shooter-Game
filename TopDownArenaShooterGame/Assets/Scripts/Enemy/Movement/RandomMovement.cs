@@ -13,6 +13,7 @@ namespace Enemy.Movement
             Rb2D.velocity = _direction * speed;
         }
         
+        
         private new void Start()
         {
             base.Start();
@@ -25,7 +26,7 @@ namespace Enemy.Movement
             _direction.Normalize();
         }
 
-        private void OnTriggerStay2D(Collider2D col)
+        protected void OnTriggerStay2D(Collider2D col)
         {
             if (col.gameObject.CompareTag("Wall")) ChangeDirection();
         }

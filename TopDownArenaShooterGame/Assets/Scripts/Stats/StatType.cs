@@ -15,7 +15,9 @@
         damageReflection,
         speed,
         luck,
-        harvesting,
+        harvesting, 
+        
+        
         hpRate,
         hpRegenRate,
         damageRate,

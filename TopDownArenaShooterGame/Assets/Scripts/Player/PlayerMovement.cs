@@ -8,7 +8,15 @@ namespace Player
     public class PlayerMovement
     {
         private readonly Rigidbody2D rb2d;
-        public float Speed { private get; set;}
+        //public float Speed { private get; set;}
+
+        private float speed;
+
+        public void setSpeed(float speed)
+        {
+            this.speed = speed;
+        }
+        
 
         public PlayerMovement(Rigidbody2D rb2d)
         {
@@ -21,7 +29,7 @@ namespace Player
             float vertical = Input.GetAxisRaw("Vertical");
 
             var movement = new Vector2(horizontal, vertical);
-            rb2d.velocity = movement * Speed;
+            rb2d.velocity = movement * speed;
         }
     }
 }

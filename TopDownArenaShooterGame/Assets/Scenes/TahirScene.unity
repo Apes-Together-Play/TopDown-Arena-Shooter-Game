@@ -493,14 +493,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 270984814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a124c10326404791a6f988896ddbf8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d88b86e5fef4581bb7dd54e54ea45d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   statManager:
     stats: []
-  speed: 10
-  _weapon: {fileID: 0}
-  _rb2d: {fileID: 0}
+  key: 0
 --- !u!1 &309544658
 GameObject:
   m_ObjectHideFlags: 0

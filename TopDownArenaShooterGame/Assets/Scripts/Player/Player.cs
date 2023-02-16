@@ -10,6 +10,24 @@ namespace Player
 {
     public class Player : MonoBehaviour
     {
+        
+        // HADI BISMILLAH
+
+        [SerializeField] private Weapon weapon;
+        [SerializeField] private PlayerAnimation playerAnimation;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         [SerializeField] private StatManager statManager;
         public PlayerMovement movement; 
         private Rigidbody2D rb2d;
@@ -45,6 +63,8 @@ namespace Player
         private void FixedUpdate()
         { 
             movement.Move();
+            weapon.RotateGun();
+            playerAnimation.FlipDude();
         }
 
         private IEnumerator Fire()

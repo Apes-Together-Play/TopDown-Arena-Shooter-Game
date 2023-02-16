@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -52,7 +53,8 @@ namespace Player
 
                 trnsBody.position = trnsObject.position;
                 isGrounded = true;
-                onGroundHitEvent.Invoke();
+                onGroundHitEvent?.Invoke();
+                Destroy(gameObject);
             }
 
         }

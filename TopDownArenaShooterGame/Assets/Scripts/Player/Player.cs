@@ -14,6 +14,9 @@ namespace Player
         // HADI BISMILLAH
 
         [SerializeField] private Weapon weapon;
+        
+        
+        
         [SerializeField] private PlayerAnimation playerAnimation;
         
         
@@ -24,9 +27,6 @@ namespace Player
         [SerializeField] private StatManager statManager;
         public PlayerMovement movement; 
         private Rigidbody2D rb2d;
-
-        [SerializeField] private KeyCode key;
-
         
 
         
@@ -53,7 +53,7 @@ namespace Player
             //StartCoroutine(Fire());
         }
 
-        private void FixedUpdate()
+        private void Update()
         { 
             movement.Move();
             weapon.RotateGun();
@@ -65,7 +65,7 @@ namespace Player
         {
             //while (true)
             //{
-                //Vector2 mousePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+            //Vector2 mousePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
                 //var fireData = new FireData();
                 //_weapon.Fire(fireData);
                 

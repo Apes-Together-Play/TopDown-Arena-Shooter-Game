@@ -7,9 +7,10 @@ namespace Player
         
         [SerializeField] private GameObject bullet;
         [SerializeField] private Transform trnsGunTip;
-        // ?
-        public Vector2 groundDispenseVelocity;
-        public Vector2 verticalDispenseVelocity;
+      
+        
+        [SerializeField] private Vector2 groundDispenseVelocity;
+        [SerializeField] private Vector2 verticalDispenseVelocity;
         
         
         // has to be an abstract class 

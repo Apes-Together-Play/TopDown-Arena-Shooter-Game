@@ -501,7 +501,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 606626194}
   playerAnimation: {fileID: 1706227071}
-  key: 8
 --- !u!114 &270984821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,6 +954,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "KO\u015EAN"
       objectReference: {fileID: 0}
+    - target: {fileID: 4127920122223623465, guid: 96bd7cfe9ee203d46b2c11de923d68cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4127920122223623468, guid: 96bd7cfe9ee203d46b2c11de923d68cb, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1041,7 +1044,7 @@ MonoBehaviour:
   m_Follow: {fileID: 270984816}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 7
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1142,7 +1145,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1217,6 +1220,10 @@ PrefabInstance:
     - target: {fileID: 4127920122223623465, guid: 790eb8e289b05944eb4fb17bd76d44f7, type: 3}
       propertyPath: m_Name
       value: "MESAFEL\u0130"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127920122223623465, guid: 790eb8e289b05944eb4fb17bd76d44f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4127920122223623468, guid: 790eb8e289b05944eb4fb17bd76d44f7, type: 3}
       propertyPath: m_RootOrder
@@ -1680,6 +1687,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RANDOM
       objectReference: {fileID: 0}
+    - target: {fileID: 4127920122223623465, guid: 6ccbc80ccb928514794744bfcaa76a09, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4127920122223623468, guid: 6ccbc80ccb928514794744bfcaa76a09, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1798,7 +1809,7 @@ Transform:
   m_GameObject: {fileID: 1761118453}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.7046272}
-  m_LocalScale: {x: 0.95, y: 1.2, z: 1}
+  m_LocalScale: {x: 1.13, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

@@ -10,17 +10,15 @@ namespace Player
         
         private Vector2 groundVelocity;
         private float verticalVelocity;
-        private float lastIntialVerticalVelocity;
-        
-        public Transform trnsObject;
-        public Transform trnsBody;
-        public Transform trnsShadow;
-        
-        public UnityEvent onGroundHitEvent;
 
+        [Header("Objects")]
+        [SerializeField] private Transform trnsObject;
+        [SerializeField] private Transform trnsBody;
         
+        [Header("Movement")]
         [SerializeField] private float gravity;
         
+        public UnityEvent onGroundHitEvent;
         private void Update()
         {
             Move();
@@ -30,10 +28,10 @@ namespace Player
         
         public void Initialize(Vector2 groundVelocity, float verticalVelocity)
         {
+            // initial velocity will be 
             isGrounded = false;
             this.groundVelocity = groundVelocity;
             this.verticalVelocity = verticalVelocity;
-            lastIntialVerticalVelocity = verticalVelocity;
         }
         
         void Move()
@@ -41,6 +39,7 @@ namespace Player
             if (!isGrounded) 
             {
                 verticalVelocity += gravity * Time.deltaTime;
+                
                 trnsBody.position += new Vector3(0, verticalVelocity, 0) * Time.deltaTime;
             }
 

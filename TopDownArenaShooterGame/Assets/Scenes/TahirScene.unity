@@ -721,9 +721,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76cf4258fc5648b1893eadbd3f93c78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1582406974983620084, guid: 05208dea4f85541909d144d52f6ef27b, type: 3}
+  bullet: {fileID: 3410846657456984062, guid: 05208dea4f85541909d144d52f6ef27b, type: 3}
   trnsGunTip: {fileID: 1863550848}
-  groundDispenseVelocity: {x: 15, y: 15}
+  groundDispenseVelocity: {x: 15, y: 20}
   verticalDispenseVelocity: {x: 10, y: 10}
   trnsGun: {fileID: 606626195}
 --- !u!4 &606626195

@@ -5,7 +5,7 @@ namespace Player
     public class Weapon : MonoBehaviour
     {
         
-        [SerializeField] private GameObject bullet;
+        [SerializeField] private BombMovement bullet;
         [SerializeField] private Transform trnsGunTip;
       
         
@@ -15,11 +15,10 @@ namespace Player
         
         // has to be an abstract class 
         public void Shoot()
-        {
-            if (Input.GetMouseButtonDown(0)){ // add IE .... tarzi bir condition daha ekle
-                GameObject insantiatedBullet = Instantiate(bullet, trnsGunTip.position, Quaternion.identity);
-                insantiatedBullet.GetComponent<BombMovement>().Initialize(trnsGun.right * Random.Range(groundDispenseVelocity.x, groundDispenseVelocity.y), Random.Range(verticalDispenseVelocity.x, verticalDispenseVelocity.y));
-            }
+        { // add IE .... tarzi bir condition daha ekle
+            //Vector2 mousePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+            var insantiatedBullet = Instantiate(bullet, trnsGunTip.position, Quaternion.identity);
+            insantiatedBullet.Initialize(trnsGun.right * Random.Range(groundDispenseVelocity.x, groundDispenseVelocity.y), Random.Range(verticalDispenseVelocity.x, verticalDispenseVelocity.y));
         }
         
 

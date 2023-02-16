@@ -4,7 +4,6 @@ using Ability;
 using Fire;
 using Stats;
 using UnityEngine;
-using Input = UnityEngine.Windows.Input;
 
 namespace Player
 {
@@ -14,22 +13,11 @@ namespace Player
         // HADI BISMILLAH
 
         [SerializeField] private Weapon weapon;
-        
-        
-        
         [SerializeField] private PlayerAnimation playerAnimation;
-        
-        
-        
-        
-        
-        
         [SerializeField] private StatManager statManager;
+        
         public PlayerMovement movement; 
         private Rigidbody2D rb2d;
-        
-
-        
         
         private void Start()
         {
@@ -50,19 +38,32 @@ namespace Player
             
             baseStats.DoUpgrade();
 
-            //StartCoroutine(Fire());
+            StartCoroutine(Fire());
         }
 
         private void Update()
-        { 
+        {
+            
             movement.Move();
             weapon.RotateGun();
             playerAnimation.FlipDude();
-            weapon.Shoot();
+            // if (Input.GetMouseButton(0))
+            //     weapon.Shoot();
         }
 
+        
         private IEnumerator Fire()
         {
+            while (true)
+            {
+                if (Input.GetMouseButton(0))
+                {
+                    weapon.Shoot();
+                    yield return new WaitForSeconds(0.5f);
+                }
+                yield return null;
+            }
+            
             //while (true)
             //{
             //Vector2 mousePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
@@ -76,7 +77,6 @@ namespace Player
                 
                 //yield return new WaitForSeconds(0.1f);
             //}
-            return null;
         }
     }
 }

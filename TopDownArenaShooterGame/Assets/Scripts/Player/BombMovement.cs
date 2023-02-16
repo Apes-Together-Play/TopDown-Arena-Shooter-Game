@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Player
 {
-    public class BombBullet : BulletMovement
+    public class BombMovement : MonoBehaviour
     {
         private bool isGrounded;
         
@@ -57,10 +56,9 @@ namespace Player
             }
 
         }
-        
-        
-        
-        
+
+
+
 
     }
 }

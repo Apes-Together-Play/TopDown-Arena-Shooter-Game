@@ -21,13 +21,6 @@ namespace Player
         
         
         
-        
-        
-        
-        
-        
-        
-        
         [SerializeField] private StatManager statManager;
         public PlayerMovement movement; 
         private Rigidbody2D rb2d;
@@ -65,6 +58,7 @@ namespace Player
             movement.Move();
             weapon.RotateGun();
             playerAnimation.FlipDude();
+            weapon.Shoot();
         }
 
         private IEnumerator Fire()

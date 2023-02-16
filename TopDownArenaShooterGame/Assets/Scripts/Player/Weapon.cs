@@ -12,18 +12,17 @@ namespace Player
         public Vector2 verticalDispenseVelocity;
         
         
+        // has to be an abstract class 
         public void Shoot()
         {
             if (Input.GetMouseButtonDown(0)){ // add IE .... tarzi bir condition daha ekle
                 GameObject insantiatedBullet = Instantiate(bullet, trnsGunTip.position, Quaternion.identity);
-                insantiatedBullet.GetComponent<BulletMovement>().Initialize(trnsGun.right * Random.Range(groundDispenseVelocity.x, groundDispenseVelocity.y), Random.Range(verticalDispenseVelocity.x, verticalDispenseVelocity.y));
-                
+                insantiatedBullet.GetComponent<BombMovement>().Initialize(trnsGun.right * Random.Range(groundDispenseVelocity.x, groundDispenseVelocity.y), Random.Range(verticalDispenseVelocity.x, verticalDispenseVelocity.y));
             }
-
         }
         
-        
-        
+
+        // has to be in every weapon class
         private Vector2 mousePos;
         
         [SerializeField] private Transform trnsGun;

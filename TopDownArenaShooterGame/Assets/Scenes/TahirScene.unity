@@ -723,9 +723,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3410846657456984062, guid: 05208dea4f85541909d144d52f6ef27b, type: 3}
   trnsGunTip: {fileID: 1863550848}
-  groundDispenseVelocity: {x: 15, y: 20}
+  groundDispenseVelocity: {x: 5.91, y: 6.08}
   verticalDispenseVelocity: {x: 10, y: 10}
   trnsGun: {fileID: 606626195}
+  attackSpeed: 0
 --- !u!4 &606626195
 Transform:
   m_ObjectHideFlags: 0

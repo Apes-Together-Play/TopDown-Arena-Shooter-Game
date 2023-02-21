@@ -1,3 +1,4 @@
+using System;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,7 +19,10 @@ namespace Player
         [Header("Movement")]
         [SerializeField] private float gravity;
         
+        [SerializeField] private float time=1f;
         public UnityEvent onGroundHitEvent;
+        
+
         private void Update()
         {
             Move();
@@ -26,12 +30,15 @@ namespace Player
         }
         
         
-        public void Initialize(Vector2 groundVelocity, float verticalVelocity)
+        public void Initialize(Vector2 targetRelativePosition)
         {
+            var distance = targetRelativePosition.magnitude;
+            time = (time * time / time + time) / 2;
             // initial velocity will be 
             isGrounded = false;
-            this.groundVelocity = groundVelocity;
-            this.verticalVelocity = verticalVelocity;
+            groundVelocity = targetRelativePosition.normalized * distance/time;
+            verticalVelocity = -(gravity/2)*time;
+            Debug.Log(verticalVelocity);
         }
         
         void Move()

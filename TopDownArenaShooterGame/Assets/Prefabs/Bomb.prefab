@@ -48,11 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trnsObject: {fileID: 1098542800601190068}
   trnsBody: {fileID: 7278912204045796911}
-  trnsShadow: {fileID: 8722588789882886339}
+  gravity: -25
+  time: 0.8
   onGroundHitEvent:
     m_PersistentCalls:
       m_Calls: []
-  gravity: -20
 --- !u!1 &7177894191172856158
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0

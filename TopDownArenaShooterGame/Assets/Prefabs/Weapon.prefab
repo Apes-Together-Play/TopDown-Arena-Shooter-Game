@@ -41,8 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6590607792745006800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b1f47bcef0547e1848d7086e9efe7c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 76cf4258fc5648b1893eadbd3f93c78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsData: {fileID: 11400000, guid: 990619c76c7dca54a950bfee4ac51eb6, type: 2}
-  bullet: {fileID: 6204077486678664705, guid: 9c8e10e713a291d41b905013a9b6678d, type: 3}
+  bullet: {fileID: 0}
+  trnsGunTip: {fileID: 0}
+  groundDispenseVelocity: {x: 0, y: 0}
+  verticalDispenseVelocity: {x: 0, y: 0}
+  trnsGun: {fileID: 0}

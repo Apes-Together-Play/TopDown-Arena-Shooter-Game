@@ -10,13 +10,13 @@ namespace Player
     public class Player : MonoBehaviour
     {
         
-        // HADI BISMILLAH
+        // HADI BISMILLAHIRRAHMANIRRAHIM
 
         [SerializeField] private Weapon weapon;
         [SerializeField] private PlayerAnimation playerAnimation;
         [SerializeField] private StatManager statManager;
         
-        public PlayerMovement movement; 
+        private PlayerMovement movement; 
         private Rigidbody2D rb2d;
         
         private void Start()
@@ -43,12 +43,9 @@ namespace Player
 
         private void Update()
         {
-            
             movement.Move();
             weapon.RotateGun();
             playerAnimation.FlipDude();
-            // if (Input.GetMouseButton(0))
-            //     weapon.Shoot();
         }
 
         
@@ -61,22 +58,9 @@ namespace Player
                     weapon.Shoot();
                     yield return new WaitForSeconds(0.5f);
                 }
+
                 yield return null;
             }
-            
-            //while (true)
-            //{
-            //Vector2 mousePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
-                //var fireData = new FireData();
-                //_weapon.Fire(fireData);
-                
-                // var bulletDirection = mousePosition.normalized;
-                // var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                // //bullet.layerMask =  (1<< 8) | (1<<6);
-                // bullet.Fire(bulletDirection);
-                
-                //yield return new WaitForSeconds(0.1f);
-            //}
         }
     }
 }

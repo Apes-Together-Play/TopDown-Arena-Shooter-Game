@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Player
@@ -11,21 +12,24 @@ namespace Player
         
         [SerializeField] private Vector2 groundDispenseVelocity;
         [SerializeField] private Vector2 verticalDispenseVelocity;
+
+        [SerializeField] private Transform trnsGun;
+        [SerializeField] private float attackSpeed;
+        private Vector2 mousePos;
         
         
         // has to be an abstract class 
         public void Shoot()
-        { // add IE .... tarzi bir condition daha ekle
-            //Vector2 mousePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
-            var insantiatedBullet = Instantiate(bullet, trnsGunTip.position, Quaternion.identity);
-            insantiatedBullet.Initialize(trnsGun.right * Random.Range(groundDispenseVelocity.x, groundDispenseVelocity.y), Random.Range(verticalDispenseVelocity.x, verticalDispenseVelocity.y));
+        {
+            Vector2 mouseRelativePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+
+            var instantiatedBullet = Instantiate(bullet, trnsGunTip.position, Quaternion.identity);
+            instantiatedBullet.Initialize(mouseRelativePosition);
         }
         
 
         // has to be in every weapon class
-        private Vector2 mousePos;
-        
-        [SerializeField] private Transform trnsGun;
+       
         public void RotateGun()
         {
             mousePos = Input.mousePosition;
@@ -37,5 +41,6 @@ namespace Player
             float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
             trnsGun.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
+        
     }
 }

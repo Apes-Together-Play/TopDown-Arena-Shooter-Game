@@ -36,6 +36,14 @@ namespace Player
                 value = 11f
             }); 
             
+            
+            baseStats.upgradeToApply.Add(
+                new StatData
+                {
+                    statType = StatType.attackSpeed,
+                    value = -50f
+                });
+            
             baseStats.DoUpgrade();
 
             StartCoroutine(Fire());
@@ -56,7 +64,12 @@ namespace Player
                 if (Input.GetMouseButton(0))
                 {
                     weapon.Shoot();
-                    yield return new WaitForSeconds(0.5f);
+                    float cooldown = 1 / weapon.GetAttackSpeed();
+
+                    float characterAttackSpeedRate = statManager.statsInfo[StatType.attackSpeed];
+                    
+                    cooldown *= (characterAttackSpeedRate > 0) ? 1 / (1 + characterAttackSpeedRate / 100) : 1 - (characterAttackSpeedRate) / 100; 
+                    yield return new WaitForSeconds(cooldown);
                 }
 
                 yield return null;

@@ -6,16 +6,18 @@ namespace Player
     public class Weapon : MonoBehaviour
     {
         
-        [SerializeField] private BombMovement bullet;
-        [SerializeField] private Transform trnsGunTip;
-      
+        [SerializeField] private BombMovement bullet; // bi bullet movement alicak
         
-        [SerializeField] private Vector2 groundDispenseVelocity;
-        [SerializeField] private Vector2 verticalDispenseVelocity;
-
+        [SerializeField] private Transform trnsGunTip;
         [SerializeField] private Transform trnsGun;
+        
         [SerializeField] private float attackSpeed;
         private Vector2 mousePos;
+
+        public float GetAttackSpeed()
+        {
+            return attackSpeed;
+        }
         
         
         // has to be an abstract class 
@@ -29,7 +31,7 @@ namespace Player
         
 
         // has to be in every weapon class
-       
+
         public void RotateGun()
         {
             mousePos = Input.mousePosition;
@@ -41,6 +43,5 @@ namespace Player
             float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
             trnsGun.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
-        
     }
 }

@@ -11,7 +11,10 @@ namespace Player
         
         // HADI BISMILLAHIRRAHMANIRRAHIM
 
-        [SerializeField] private Weapon weapon;
+        [SerializeField] private Weapon weapon1;
+        [SerializeField] private Weapon weapon2;
+        private Weapon _currentWeapon;
+        
         [SerializeField] private PlayerAnimation playerAnimation;
         [SerializeField] private StatManager statManager;
         
@@ -58,8 +61,18 @@ namespace Player
         private void Update()
         {
             movement.Move();
-            weapon.RotateGun();
+            _currentWeapon.RotateGun();
             playerAnimation.FlipDude();
+            
+            if (Input.GetKeyDown("1"))
+            {
+                _currentWeapon = weapon1;
+            }
+            if (Input.GetKeyDown("2"))
+            {
+                _currentWeapon = weapon2;
+            }
+
         }
 
         
@@ -69,8 +82,8 @@ namespace Player
             {
                 if (Input.GetMouseButton(0))
                 {
-                    weapon.Shoot();
-                    float cooldown = 1 / weapon.GetAttackSpeed();
+                    _currentWeapon.Shoot();
+                    float cooldown = 1 / _currentWeapon.GetAttackSpeed();
 
                     float characterAttackSpeedRate = statManager.statsInfo[StatType.attackSpeed];
                     
@@ -81,5 +94,7 @@ namespace Player
                 yield return null;
             }
         }
+        
+        
     }
 }

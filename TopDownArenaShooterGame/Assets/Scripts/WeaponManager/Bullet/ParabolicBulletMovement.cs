@@ -5,33 +5,28 @@ using UnityEngine.Events;
 
 namespace WeaponManager.Bullet
 {
-    public class ParabolicBulletMovement : MonoBehaviour
+    public class ParabolicBulletMovement : Bullet
     {
         private bool isGrounded;
         
         private Vector2 groundVelocity;
         private float verticalVelocity;
-
-        [Header("Objects")]
-        [SerializeField] private Transform trnsObject;
-        [SerializeField] private Transform trnsBody;
-
+        
         [Header("Movement")]
         [SerializeField] private float gravity;
 
-        [SerializeField] private float time=1f;
+        [SerializeField] private float time;
         public UnityEvent onGroundHitEvent;
         
 
-        private void Update()
+        protected void Update()
         {
-            Move();
-            CheckGroundHit();  
-            
+            base.Update();
+            CheckGroundHit();
         }
         
         
-        public void Initialize(Vector2 targetRelativePosition)
+        public override void Initialize(Vector2 targetRelativePosition)
         {
             var distance = targetRelativePosition.magnitude;
             isGrounded = false;
@@ -39,7 +34,7 @@ namespace WeaponManager.Bullet
             verticalVelocity = -(gravity/2)*time;
         }
         
-        void Move()
+        protected override void Move()
         {
             if (!isGrounded) 
             {

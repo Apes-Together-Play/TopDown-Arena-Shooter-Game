@@ -1,5 +1,4 @@
-
-using System;
+using DefaultNamespace;
 using UnityEngine;
 
 namespace WeaponManager.Bullet
@@ -11,12 +10,30 @@ namespace WeaponManager.Bullet
         
         protected override void Move()
         {
-            trnsObject.position += (Vector3)(_direction * velocity) * Time.deltaTime;
+            transform.position += (Vector3)(_direction * velocity) * Time.deltaTime;
         }
 
         public override void Initialize(Vector2 targetRelativePosition)
         {
             _direction = targetRelativePosition.normalized;
+            
+            var angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        }
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            Debug.Log("AAA");
+            if (other.CompareTag("Wall"))
+            {
+                Destroy(gameObject);
+                return;
+            }
+            
+            if (other.TryGetComponent(out IMortal mortal))
+            {
+                mortal.TakeDamage();
+                Destroy(gameObject);
+            }
         }
     }
 }

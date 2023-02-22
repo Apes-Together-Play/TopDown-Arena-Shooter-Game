@@ -2,6 +2,6 @@
 {
     public interface IMortal
     {
-        public void TakeDamage(float damage, float knockback);
+        public void TakeDamage();
     }
 }

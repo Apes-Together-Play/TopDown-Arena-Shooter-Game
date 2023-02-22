@@ -19,7 +19,7 @@ namespace WeaponManager.Bullet
         public UnityEvent onGroundHitEvent;
         
 
-        protected void Update()
+        protected new void Update()
         {
             base.Update();
             CheckGroundHit();

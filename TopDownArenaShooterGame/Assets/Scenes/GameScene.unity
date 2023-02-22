@@ -1309,10 +1309,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76cf4258fc5648b1893eadbd3f93c78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3410846657456984062, guid: 05208dea4f85541909d144d52f6ef27b, type: 3}
   trnsGunTip: {fileID: 1863550848}
   trnsGun: {fileID: 606626195}
   attackSpeed: 1
+  bullet: {fileID: 3410846657456984062, guid: 05208dea4f85541909d144d52f6ef27b, type: 3}
+  angle: 30
+  accuracy: {x: 1, y: 1}
 --- !u!4 &606626195
 Transform:
   m_ObjectHideFlags: 0

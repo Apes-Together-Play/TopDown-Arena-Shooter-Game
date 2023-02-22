@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Ability;
-using Fire;
 using Stats;
 using UnityEngine;
+using WeaponManager.Weapon;
 
 namespace Player
 {
@@ -41,8 +40,15 @@ namespace Player
                 new StatData
                 {
                     statType = StatType.attackSpeed,
-                    value = -50f
+                    value = 0f
                 });
+            
+            
+            baseStats.upgradeToApply.Add(new StatData
+            {
+                statType = StatType.hp,
+                value = 100f
+            });
             
             baseStats.DoUpgrade();
 

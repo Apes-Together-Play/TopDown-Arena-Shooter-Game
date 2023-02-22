@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Fire;
 using Stats;
 using Unity.VisualScripting;
 using UnityEngine;

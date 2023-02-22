@@ -3,9 +3,9 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Player
+namespace WeaponManager.Bullet
 {
-    public class BombMovement : MonoBehaviour
+    public class ParabolicBulletMovement : MonoBehaviour
     {
         private bool isGrounded;
         
@@ -15,10 +15,10 @@ namespace Player
         [Header("Objects")]
         [SerializeField] private Transform trnsObject;
         [SerializeField] private Transform trnsBody;
-        
+
         [Header("Movement")]
         [SerializeField] private float gravity;
-        
+
         [SerializeField] private float time=1f;
         public UnityEvent onGroundHitEvent;
         
@@ -26,19 +26,17 @@ namespace Player
         private void Update()
         {
             Move();
-            CheckGroundHit();   
+            CheckGroundHit();  
+            
         }
         
         
         public void Initialize(Vector2 targetRelativePosition)
         {
             var distance = targetRelativePosition.magnitude;
-            time = (time * time / time + time) / 2;
-            // initial velocity will be 
             isGrounded = false;
             groundVelocity = targetRelativePosition.normalized * distance/time;
             verticalVelocity = -(gravity/2)*time;
-            Debug.Log(verticalVelocity);
         }
         
         void Move()
@@ -46,10 +44,8 @@ namespace Player
             if (!isGrounded) 
             {
                 verticalVelocity += gravity * Time.deltaTime;
-                
                 trnsBody.position += new Vector3(0, verticalVelocity, 0) * Time.deltaTime;
             }
-
             trnsObject.position += (Vector3)groundVelocity * Time.deltaTime;
         }
         
@@ -62,11 +58,7 @@ namespace Player
                 onGroundHitEvent?.Invoke();
                 Destroy(gameObject);
             }
-
+            
         }
-
-
-
-
     }
 }

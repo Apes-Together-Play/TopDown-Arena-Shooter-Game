@@ -99,4 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trnsObject: {fileID: 8003126324935838718}
   trnsBody: {fileID: 8003126324935838718}
-  velocity: 5
+  velocity: 10

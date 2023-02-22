@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 namespace WeaponManager.Weapon
 {
     //TODO ismini degistir
-    public class BombWeapon : Weapon
+    public class OneBulletWeapon : Weapon
     {
         
         [SerializeField] private Bullet.Bullet bullet;

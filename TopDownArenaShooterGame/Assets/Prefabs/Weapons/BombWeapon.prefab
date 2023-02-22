@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 249436662883823755}
   - component: {fileID: 249436662883823754}
   m_Layer: 0
-  m_Name: bombWeapon
+  m_Name: BombWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6060238296902180377}
   m_Layer: 0
-  m_Name: tip
+  m_Name: WeaponTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 3701979386946029655}
   - component: {fileID: 8552152000287301734}
   m_Layer: 0
-  m_Name: cannon
+  m_Name: WeaponBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

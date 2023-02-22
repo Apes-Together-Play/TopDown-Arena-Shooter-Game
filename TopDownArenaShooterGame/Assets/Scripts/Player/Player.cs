@@ -10,14 +10,14 @@ namespace Player
     {
         
         // HADI BISMILLAHIRRAHMANIRRAHIM
-
-        [SerializeField] private Weapon weapon1;
-        [SerializeField] private Weapon weapon2;
+        
+        
+        [SerializeField] private Weapon[] weapons;
         private Weapon _currentWeapon;
         
         [SerializeField] private PlayerAnimation playerAnimation;
         [SerializeField] private StatManager statManager;
-        
+
         private PlayerMovement movement; 
         private Rigidbody2D rb2d;
         
@@ -25,6 +25,8 @@ namespace Player
         {
             rb2d = GetComponent<Rigidbody2D>();
             movement = new PlayerMovement(rb2d);
+            _currentWeapon = weapons[0];
+            
             
             StatManager.OnSpeedUpgrade += movement.SetSpeed;
             DashAbility.OnDashAbility += movement.SetSpeedByMultiply;
@@ -63,16 +65,19 @@ namespace Player
             movement.Move();
             _currentWeapon.RotateGun();
             playerAnimation.FlipDude();
-            
+            ChangeWeapon();
+        }
+
+        private void ChangeWeapon()
+        {
             if (Input.GetKeyDown("1"))
             {
-                _currentWeapon = weapon1;
+                _currentWeapon = weapons[0];
             }
             if (Input.GetKeyDown("2"))
             {
-                _currentWeapon = weapon2;
+                _currentWeapon = weapons[1];
             }
-
         }
 
         

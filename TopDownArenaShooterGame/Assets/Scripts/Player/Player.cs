@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Ability;
 using Stats;
 using UnityEngine;
@@ -13,21 +14,27 @@ namespace Player
         
         
         [SerializeField] private Weapon[] weapons;
-        private Weapon _currentWeapon;
-        
         [SerializeField] private PlayerAnimation playerAnimation;
         [SerializeField] private StatManager statManager;
-
+        
+        private int _weaponIndex = 0;
         private PlayerMovement movement; 
         private Rigidbody2D rb2d;
-        
+
+        private void Awake()
+        {
+            foreach (var weapon in weapons)
+            {
+               weapon.gameObject.SetActive(false);
+            }
+        }
+
         private void Start()
         {
             rb2d = GetComponent<Rigidbody2D>();
             movement = new PlayerMovement(rb2d);
-            _currentWeapon = weapons[0];
-            
-            
+            weapons[_weaponIndex].gameObject.SetActive(true);
+
             StatManager.OnSpeedUpgrade += movement.SetSpeed;
             DashAbility.OnDashAbility += movement.SetSpeedByMultiply;
 
@@ -63,20 +70,31 @@ namespace Player
         private void Update()
         {
             movement.Move();
-            _currentWeapon.RotateGun();
-            playerAnimation.FlipDude();
             ChangeWeapon();
+            playerAnimation.FlipDude();
+        }
+        
+        private void LateUpdate()
+        {
+            var currentWeapon = weapons[_weaponIndex];
+            currentWeapon.RotateGun();
+            currentWeapon.Flip();
         }
 
         private void ChangeWeapon()
         {
             if (Input.GetKeyDown("1"))
             {
-                _currentWeapon = weapons[0];
+                Debug.Log("EMIN MISINIZ");
+                weapons[_weaponIndex].gameObject.SetActive(false);
+                _weaponIndex = 0;
+                weapons[_weaponIndex].gameObject.SetActive(true);
             }
             if (Input.GetKeyDown("2"))
             {
-                _currentWeapon = weapons[1];
+                weapons[_weaponIndex].gameObject.SetActive(false);
+                _weaponIndex = 1;
+                weapons[_weaponIndex].gameObject.SetActive(true);
             }
         }
 
@@ -87,8 +105,9 @@ namespace Player
             {
                 if (Input.GetMouseButton(0))
                 {
-                    _currentWeapon.Shoot();
-                    float cooldown = 1 / _currentWeapon.GetAttackSpeed();
+                    var currentWeapon = weapons[_weaponIndex];
+                    currentWeapon.Shoot();
+                    float cooldown = 1 / currentWeapon.AttackSpeed;
 
                     float characterAttackSpeedRate = statManager.statsInfo[StatType.attackSpeed];
                     

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Player
@@ -7,23 +8,17 @@ namespace Player
         private Vector2 mouseWorldPos;
         
         public SpriteRenderer sprRndDude;
-        public SpriteRenderer sprRndGun;
-        
+        private Camera mainCamera;
+
+        private void Awake()
+        {
+            mainCamera = FindObjectOfType<Camera>();
+        }
+
         public void FlipDude()
         {
-
-            mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            if(mouseWorldPos.x > transform.position.x)
-            {
-                sprRndDude.flipX = false;
-                sprRndGun.flipY = false;
-            }
-            else
-            {
-                sprRndDude.flipX = true;
-                sprRndGun.flipY = true;
-            }
+            mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            sprRndDude.flipX = !(mouseWorldPos.x > transform.position.x);
         }
     }
 }

@@ -11,14 +11,12 @@ namespace WeaponManager.Weapon
     {
         
         [SerializeField] private Bullet.Bullet bullet;
-        private Vector2 _mouseRelativePosition;
-        
         [SerializeField] private Vector2 accuracy; //TODO can be changed not working so well
-        
-        
+        private Vector2 _mouseRelativePosition;
+
         public override void Shoot()
         {
-             _mouseRelativePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+            _mouseRelativePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
             
              _mouseRelativePosition.x += Random.Range(-accuracy.x, accuracy.x);
              _mouseRelativePosition.y += Random.Range(-accuracy.y, accuracy.y);

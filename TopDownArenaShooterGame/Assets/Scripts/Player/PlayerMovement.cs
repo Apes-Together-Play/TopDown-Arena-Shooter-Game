@@ -19,7 +19,6 @@ namespace Player
         public void SetSpeedByMultiply(float increaseConstant)
         {
             speed *= increaseConstant;
-            Debug.Log(speed);
         }
 
         public float GetSpeed()

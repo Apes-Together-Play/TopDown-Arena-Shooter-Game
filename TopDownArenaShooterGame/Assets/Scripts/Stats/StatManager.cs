@@ -9,10 +9,7 @@ namespace Stats
     [Serializable]
     public class StatManager
     {
-        //[SerializeField] private List<StatData> stats;
         public Dictionary<StatType, float> statsInfo = new Dictionary<StatType, float>();
-
-        
         private readonly List<StatsUpgrade> appliedUpgrades = new();
         
         public static event Action<float> OnSpeedUpgrade;

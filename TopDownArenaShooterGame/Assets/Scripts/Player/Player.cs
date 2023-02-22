@@ -9,9 +9,7 @@ namespace Player
 {
     public class Player : MonoBehaviour
     {
-        
         // HADI BISMILLAHIRRAHMANIRRAHIM
-        
         
         [SerializeField] private Weapon[] weapons;
         [SerializeField] private PlayerAnimation playerAnimation;

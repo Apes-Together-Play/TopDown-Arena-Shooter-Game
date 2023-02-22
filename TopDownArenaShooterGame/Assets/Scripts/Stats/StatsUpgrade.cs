@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Stats
 {
+    [CreateAssetMenu(menuName = "Upgrade")]
     public class StatsUpgrade : Upgrade
     {
         [SerializeField]

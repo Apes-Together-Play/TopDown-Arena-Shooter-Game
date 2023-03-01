@@ -15,9 +15,8 @@ MonoBehaviour:
   upgradeName: 
   description: 
   price: 0
-  player: {fileID: 5822990332949126290, guid: 8683e78de5330e247814accad0bd0817, type: 3}
   upgradeToApply:
   - statType: 0
     value: 100
   - statType: 11
-    value: 300
+    value: 10

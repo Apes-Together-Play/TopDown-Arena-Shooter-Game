@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Stats
 {
@@ -17,6 +15,7 @@ namespace Stats
     
         public void AddUpgrade(StatsUpgrade upgrade)
         {
+            Debug.Log("ADDED UPGRADE");
             appliedUpgrades.Add(upgrade);
             
         
@@ -29,22 +28,6 @@ namespace Stats
                 // OBSERVER PATTERNS....
                 if (statUpgrade.statType == StatType.speed)
                     OnSpeedUpgrade?.Invoke(statsInfo[statUpgrade.statType]);
-                
-                
-                // Adding to the list
-                /*
-                foreach (var statData in stats.Where(statData => statData.statType == statUpgrade.statType))
-                {
-                    statData.value += statUpgrade.value;
-                    return;
-                }
-
-                stats.Add(new StatData
-                {
-                    statType = statUpgrade.statType,
-                    value = statUpgrade.value
-                }); 
-                */
             }
         }
     }

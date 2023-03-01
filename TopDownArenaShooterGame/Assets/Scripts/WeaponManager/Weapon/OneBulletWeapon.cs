@@ -16,7 +16,7 @@ namespace WeaponManager.Weapon
 
         public override void Shoot()
         {
-            _mouseRelativePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+            _mouseRelativePosition = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position); // TODO expensive method
             
              _mouseRelativePosition.x += Random.Range(-accuracy.x, accuracy.x);
              _mouseRelativePosition.y += Random.Range(-accuracy.y, accuracy.y);

@@ -13,14 +13,16 @@ namespace Player
         
         [SerializeField] private Weapon[] weapons;
         [SerializeField] private PlayerAnimation playerAnimation;
-        [SerializeField] private StatManager statManager;
         
         private int _weaponIndex = 0;
         private PlayerMovement movement; 
         private Rigidbody2D rb2d;
+        public static StatManager statManager = new();
 
         private void Awake()
         {
+            //DontDestroyOnLoad(this);
+            //Debug.Log(statManager.statsInfo[StatType.hp]);
             foreach (var weapon in weapons)
             {
                weapon.gameObject.SetActive(false);
@@ -38,7 +40,7 @@ namespace Player
 
             // will change in the future
             StatsUpgrade baseStats = ScriptableObject.CreateInstance<StatsUpgrade>();
-            baseStats.unitsToUpgrade.Add(this.statManager);
+            //baseStats.unitsToUpgrade.Add(this.statManager);
             baseStats.upgradeToApply.Add(new StatData
             {
                 statType = StatType.speed,
@@ -60,7 +62,7 @@ namespace Player
                 value = 100f
             });
             
-            baseStats.DoUpgrade();
+            baseStats.DoUpgrade(this);
 
             StartCoroutine(Fire());
         }
@@ -83,7 +85,6 @@ namespace Player
         {
             if (Input.GetKeyDown("1"))
             {
-                Debug.Log("EMIN MISINIZ");
                 weapons[_weaponIndex].gameObject.SetActive(false);
                 _weaponIndex = 0;
                 weapons[_weaponIndex].gameObject.SetActive(true);
@@ -104,7 +105,7 @@ namespace Player
                 if (Input.GetMouseButton(0))
                 {
                     var currentWeapon = weapons[_weaponIndex];
-                    currentWeapon.Shoot();
+                    currentWeapon.Shoot(); 
                     float cooldown = 1 / currentWeapon.AttackSpeed;
 
                     float characterAttackSpeedRate = statManager.statsInfo[StatType.attackSpeed];

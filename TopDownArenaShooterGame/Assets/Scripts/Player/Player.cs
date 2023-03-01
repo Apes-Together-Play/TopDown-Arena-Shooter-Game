@@ -62,7 +62,7 @@ namespace Player
                 value = 100f
             });
             
-            baseStats.DoUpgrade(this);
+            baseStats.DoUpgrade();
 
             StartCoroutine(Fire());
         }

@@ -13,6 +13,6 @@ namespace Stats
 
         public int price;
 
-        public abstract void DoUpgrade(Player.Player player);
+        public abstract void DoUpgrade();
     }
 }

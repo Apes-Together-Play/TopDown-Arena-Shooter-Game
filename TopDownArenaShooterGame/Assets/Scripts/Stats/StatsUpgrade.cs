@@ -8,7 +8,7 @@ namespace Stats
     {
         public List<StatData> upgradeToApply = new();
 
-        public override void DoUpgrade(Player.Player playera)
+        public override void DoUpgrade()
         {
             //var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player.Player>();
             Debug.Log("Add upgrade");

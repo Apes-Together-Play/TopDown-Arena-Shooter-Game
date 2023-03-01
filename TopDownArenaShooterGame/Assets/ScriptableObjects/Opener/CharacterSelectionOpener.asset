@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c359ea87544d88bb990f4a6a7cebb6, type: 3}
   m_Name: CharacterSelectionOpener
   m_EditorClassIdentifier: 
-  sceneName: Character Selection
+  sceneName: CharacterSelection

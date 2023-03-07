@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 148689127}
   - component: {fileID: 148689126}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Assasin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 1234982069}
   - component: {fileID: 1234982068}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Priest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

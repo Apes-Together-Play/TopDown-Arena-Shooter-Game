@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1210d0d6e138489cb49b6907761fa37f, type: 3}
-  m_Name: New Stats Upgrade
+  m_Name: Priest
   m_EditorClassIdentifier: 
   upgradeName: BaseStats
   description: 
   price: 0
   upgradeToApply:
-  - statType: 12
-    value: 0
-  - statType: 12
-    value: 0
+  - statType: 8
+    value: 99

@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4c359ea87544d88bb990f4a6a7cebb6, type: 3}
-  m_Name: CharacterSelectionOpener
+  m_Script: {fileID: 11500000, guid: af0646e09a824ed8a870207e72066693, type: 3}
+  m_Name: PlayerStatManager
   m_EditorClassIdentifier: 
-  sceneName: CharacterSelection

@@ -12,6 +12,7 @@ namespace Player
 
         public void SetSpeed(float speed)
         {
+            Debug.Log(speed);
             this.speed = speed;
             
         }

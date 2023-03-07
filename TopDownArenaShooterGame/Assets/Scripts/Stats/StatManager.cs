@@ -4,21 +4,23 @@ using UnityEngine;
 
 namespace Stats
 {
-    [Serializable]
-    public class StatManager
+    [CreateAssetMenu(menuName = "Stat Manager")]
+    public class StatManager:ScriptableObject
     {
-        public Dictionary<StatType, float> statsInfo = new Dictionary<StatType, float>();
-        private readonly List<StatsUpgrade> appliedUpgrades = new();
-        
-        public static event Action<float> OnSpeedUpgrade;
+        private Dictionary<StatType, float> statsInfo;
+        private List<StatsUpgrade> appliedUpgrades;
 
-    
+        public event Action<float> OnSpeedUpgrade;
+        
+        public void OnEnable()
+        {
+            statsInfo = new Dictionary<StatType, float>();
+            appliedUpgrades = new List<StatsUpgrade>();
+        }
+
         public void AddUpgrade(StatsUpgrade upgrade)
         {
-            Debug.Log("ADDED UPGRADE");
             appliedUpgrades.Add(upgrade);
-            
-        
             foreach (var statUpgrade in upgrade.upgradeToApply)
             {
                 // Adding to the Dictionary 
@@ -27,8 +29,20 @@ namespace Stats
                 
                 // OBSERVER PATTERNS....
                 if (statUpgrade.statType == StatType.speed)
+                {
                     OnSpeedUpgrade?.Invoke(statsInfo[statUpgrade.statType]);
+                    Debug.Log(OnSpeedUpgrade);
+                }
             }
+            //Debug.Log(statsInfo[StatType.speed]);
+        }
+
+        public float GetStats(StatType type)
+        {
+            if(statsInfo.TryGetValue(type, out var value))
+                return value;
+
+            return 0;
         }
     }
 }

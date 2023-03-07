@@ -17,7 +17,7 @@ namespace Player
         private int _weaponIndex = 0;
         private PlayerMovement movement; 
         private Rigidbody2D rb2d;
-        public static StatManager statManager = new();
+        [SerializeField] private  StatManager statManager;
 
         private void Awake()
         {
@@ -35,35 +35,10 @@ namespace Player
             movement = new PlayerMovement(rb2d);
             weapons[_weaponIndex].gameObject.SetActive(true);
 
-            StatManager.OnSpeedUpgrade += movement.SetSpeed;
+            
+            LoadData();
+            statManager.OnSpeedUpgrade += movement.SetSpeed;
             DashAbility.OnDashAbility += movement.SetSpeedByMultiply;
-
-            // will change in the future
-            StatsUpgrade baseStats = ScriptableObject.CreateInstance<StatsUpgrade>();
-            //baseStats.unitsToUpgrade.Add(this.statManager);
-            baseStats.upgradeToApply.Add(new StatData
-            {
-                statType = StatType.speed,
-                value = 11f
-            }); 
-            
-            
-            baseStats.upgradeToApply.Add(
-                new StatData
-                {
-                    statType = StatType.attackSpeed,
-                    value = 0f
-                });
-            
-            
-            baseStats.upgradeToApply.Add(new StatData
-            {
-                statType = StatType.hp,
-                value = 100f
-            });
-            
-            baseStats.DoUpgrade();
-
             StartCoroutine(Fire());
         }
 
@@ -79,6 +54,11 @@ namespace Player
             var currentWeapon = weapons[_weaponIndex];
             currentWeapon.RotateGun();
             currentWeapon.Flip();
+        }
+
+        private void LoadData()
+        {
+            movement.SetSpeed(statManager.GetStats(StatType.speed));
         }
 
         private void ChangeWeapon()
@@ -108,7 +88,7 @@ namespace Player
                     currentWeapon.Shoot(); 
                     float cooldown = 1 / currentWeapon.AttackSpeed;
 
-                    float characterAttackSpeedRate = statManager.statsInfo[StatType.attackSpeed];
+                    float characterAttackSpeedRate = statManager.GetStats(StatType.attackSpeed);
                     
                     cooldown *= (characterAttackSpeedRate > 0) ? 1 / (1 + characterAttackSpeedRate / 100) : 1 - (characterAttackSpeedRate) / 100; 
                     yield return new WaitForSeconds(cooldown);

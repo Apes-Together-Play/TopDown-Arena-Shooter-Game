@@ -213,6 +213,7 @@ MonoBehaviour:
   - {fileID: 6032931833272867375}
   - {fileID: 2280205321216177143}
   playerAnimation: {fileID: 5822990333123973017}
+  statManager: {fileID: 11400000, guid: 737c246668ae1ed429dc743e31390c99, type: 2}
 --- !u!114 &5822990332949126291
 MonoBehaviour:
   m_ObjectHideFlags: 0

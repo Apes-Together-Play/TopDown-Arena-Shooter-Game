@@ -15,4 +15,6 @@ MonoBehaviour:
   upgradeName: usendim
   description: 
   price: 0
-  upgradeToApply: []
+  upgradeToApply:
+  - statType: 11
+    value: 10

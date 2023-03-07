@@ -22,7 +22,6 @@ namespace WeaponManager.Bullet
         }
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("AAA");
             if (other.CompareTag("Wall"))
             {
                 Destroy(gameObject);

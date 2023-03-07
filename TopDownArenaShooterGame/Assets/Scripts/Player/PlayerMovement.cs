@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using Stats;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Player
 {

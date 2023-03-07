@@ -24,7 +24,5 @@ namespace WeaponManager.Weapon
             var instantiatedBullet = Instantiate(bullet, trnsGunTip.position, Quaternion.identity);
             instantiatedBullet.Initialize(_mouseRelativePosition);
         }
-
-        // has to be in every weapon class
     }
 }

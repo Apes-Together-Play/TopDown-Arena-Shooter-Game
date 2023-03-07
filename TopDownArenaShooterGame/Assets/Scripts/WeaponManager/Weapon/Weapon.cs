@@ -4,22 +4,15 @@ namespace WeaponManager.Weapon
 {
     public abstract class Weapon : MonoBehaviour
     {
+        public float AttackSpeed => attackSpeed;
         
         [SerializeField] protected Transform trnsGunTip;
         [SerializeField] protected Transform trnsGun;
         [SerializeField] protected float attackSpeed;
         [SerializeField] private SpriteRenderer sprRndGun;
-
-        protected Camera MainCamera;
-        private void Awake()
-        {
-            Debug.Log("AA");
-            MainCamera = FindObjectOfType<Camera>();
-            Debug.Log(MainCamera);
-        }
-
+        
         private Vector2 mousePos;
-        public float AttackSpeed => attackSpeed;
+        
         public abstract void Shoot();
         
         public void RotateGun()

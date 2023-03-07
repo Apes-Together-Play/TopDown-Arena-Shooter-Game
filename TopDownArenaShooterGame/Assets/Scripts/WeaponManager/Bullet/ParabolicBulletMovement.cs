@@ -44,7 +44,7 @@ namespace WeaponManager.Bullet
             trnsObject.position += (Vector3)groundVelocity * Time.deltaTime;
         }
         
-        void CheckGroundHit(){
+        private void CheckGroundHit(){
 
             if(trnsBody.position.y < trnsObject.position.y && !isGrounded){
 

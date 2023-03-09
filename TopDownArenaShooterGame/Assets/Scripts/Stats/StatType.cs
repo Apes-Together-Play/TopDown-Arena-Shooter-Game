@@ -2,13 +2,14 @@
 {
     public enum StatType
     {
+        //todo this enum maybe change later
         hp,
         hpRegen,
         damage,
         attackSpeed,
         lifeSteal,
-        critChange,
-        critDamage,
+        criticChange,
+        criticDamage,
         armor,
         dodge,
         knockback,
@@ -23,8 +24,8 @@
         damageRate,
         attackSpeedRate,
         lifeStealRate,
-        critChangeRate,
-        critDamageRate,
+        criticChangeRate,
+        criticDamageRate,
         armorRate,
         dodgeRate,
         knockbackRate,

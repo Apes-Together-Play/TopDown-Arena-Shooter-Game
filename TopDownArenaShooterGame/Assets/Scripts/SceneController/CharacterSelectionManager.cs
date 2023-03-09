@@ -1,5 +1,4 @@
-﻿using System;
-using Stats;
+﻿using Stats;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,32 +8,65 @@ namespace SceneController
 {
     public class CharacterSelectionManager : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI textMeshProUGUI;
+        [SerializeField] private TextMeshProUGUI characterName;
+        [SerializeField] private TextMeshProUGUI description;
+        [SerializeField] private TextMeshProUGUI buffs;
+        [SerializeField] private TextMeshProUGUI debuffs;
+        
         [SerializeField] private Button button;
         [SerializeField] private StatManager playerStatManager;
         [SerializeField] private StatsUpgrade baseStat;
         
+        
         private StatsUpgrade _currentStatUpgrade;
+
 
         public void Load(StatsUpgrade statsUpgrade)
         {
             _currentStatUpgrade = statsUpgrade;
-           // TODO edit textMesh pro add some grid
-            textMeshProUGUI.text = statsUpgrade.name + "\n" + 
-                                   statsUpgrade.Description + "\n" ;
+            LoadName(statsUpgrade.name);
+            LoadDescription(statsUpgrade.Description);
+
+            buffs.text = "";
+            debuffs.text = "";
             foreach (var stat in  statsUpgrade.upgradeToApply)
             {
-                var value = stat.value;
-                var type = stat.statType.ToString();
-                textMeshProUGUI.text += stat.value > 0 ? $"+{value} {type}\n" : $"-{value} {type}\n";
-            }
+                
+                string type = stat.statType.ToString();
+                float value = stat.value;
 
-            if (!button.gameObject.activeInHierarchy)
-            {
-                button.gameObject.SetActive(true);
+                if (stat.value > 0) 
+                    LoadBuff(type, value);
+                else 
+                    LoadDebuff(type, value);
             }
+            
+            if (!button.gameObject.activeInHierarchy)
+                button.gameObject.SetActive(true);
+            
+        }
+        
+        private void LoadName(string _name)
+        {
+            characterName.text = _name;
+        }
+        
+        private void LoadDescription(string _description)
+        {
+            description.text = _description;
         }
 
+        private void LoadBuff(string type, float value)
+        {
+            buffs.text += $"+{value} {type}\n";
+        }
+        
+        private void LoadDebuff(string type, float value)
+        {
+            debuffs.text += $"{value} {type}\n";
+        }
+        
+        
         public void Play()
         {
             playerStatManager.AddUpgrade(baseStat);

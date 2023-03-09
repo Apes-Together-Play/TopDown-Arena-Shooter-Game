@@ -14,6 +14,7 @@ namespace SceneController
         [SerializeField] private TextMeshProUGUI debuffs;
         
         [SerializeField] private Button button;
+        [SerializeField] private GameObject card;
         [SerializeField] private StatManager playerStatManager;
         [SerializeField] private StatsUpgrade baseStat;
         
@@ -43,6 +44,8 @@ namespace SceneController
             
             if (!button.gameObject.activeInHierarchy)
                 button.gameObject.SetActive(true);
+            if (!card.activeInHierarchy)
+                card.SetActive(true);
             
         }
         

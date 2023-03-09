@@ -10,13 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1210d0d6e138489cb49b6907761fa37f, type: 3}
-  m_Name: Assassin
+  m_Name: Vampire
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
+  upgradeName: VampireBaseStats
+  description: "Ben sallama i\xE7iyorum"
   price: 0
   upgradeToApply:
-  - statType: 0
-    value: 100
+  - statType: 4
+    value: 5
   - statType: 11
+    value: 3
+  - statType: 8
     value: 10
+  - statType: 0
+    value: -50
+  - statType: 1
+    value: -3
+  - statType: 2
+    value: -5

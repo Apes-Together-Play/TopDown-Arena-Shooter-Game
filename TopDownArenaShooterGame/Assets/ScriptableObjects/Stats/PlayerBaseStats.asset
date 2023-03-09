@@ -12,9 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1210d0d6e138489cb49b6907761fa37f, type: 3}
   m_Name: PlayerBaseStats
   m_EditorClassIdentifier: 
-  upgradeName: usendim
-  description: 
+  upgradeName: Hooman
+  description: At least Im a human :/
   price: 0
   upgradeToApply:
+  - statType: 0
+    value: 100
+  - statType: 1
+    value: 0
+  - statType: 2
+    value: 25
+  - statType: 3
+    value: 1
+  - statType: 4
+    value: 0
+  - statType: 5
+    value: 10
+  - statType: 6
+    value: 150
+  - statType: 7
+    value: 5
+  - statType: 8
+    value: 5
+  - statType: 9
+    value: 0
+  - statType: 10
+    value: 0
   - statType: 11
     value: 10
+  - statType: 12
+    value: 10
+  - statType: 13
+    value: 0

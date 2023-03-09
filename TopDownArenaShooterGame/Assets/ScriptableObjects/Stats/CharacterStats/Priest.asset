@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Priest
   m_EditorClassIdentifier: 
   upgradeName: PriestBaseStats
-  description: 
+  description: I am the fucking Priest I can laugh HHAHAHAHAA
   price: 0
   upgradeToApply:
   - statType: 12

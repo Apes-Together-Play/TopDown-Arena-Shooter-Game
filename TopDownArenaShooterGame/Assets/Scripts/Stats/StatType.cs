@@ -4,6 +4,7 @@
     {
         //todo this enum maybe change later
         hp, // 100 at the beginning
+        currentHP, // her market asamasinda hp ye esitlenir, when it's 0 gg wp cerEZ, mayonEZ, karincaincitmEZ,
         hpRegen, // 1/5 * x^1/2
         damage, // 0 at the beginning
         attackSpeed, // silah cooldown'ini % li yapiyor + ve - olabilir

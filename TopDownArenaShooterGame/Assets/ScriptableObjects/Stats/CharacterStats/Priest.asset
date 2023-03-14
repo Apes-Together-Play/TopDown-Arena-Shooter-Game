@@ -16,7 +16,7 @@ MonoBehaviour:
   description: I am the fucking Priest I can laugh HHAHAHAHAA
   price: 0
   upgradeToApply:
-  - statType: 12
+  - statType: 14
     value: 20
   - statType: 1
     value: 2

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Ability;
+using Ability.CharacterMainAbility;
 using UnityEngine;
 
 namespace Stats
@@ -11,13 +12,22 @@ namespace Stats
         private Dictionary<StatType, float> statsInfo;
         private List<StatsUpgrade> appliedUpgrades;
 
-        public event Action<float> OnSpeedUpgrade;
         
         public void OnEnable()
         {
             statsInfo = new Dictionary<StatType, float>();
             appliedUpgrades = new List<StatsUpgrade>();
-            DashAbility.OnDashAbility += SetSpeedByMultiply;
+            
+            
+            StatAbility.OnStatAbility += SetStatHelper;
+        }
+
+        private void SetStatHelper(StatType statType, float value, UpgradeType upgradeType)
+        {
+            if (upgradeType == UpgradeType.Multiply)
+                SetStatByMultiply(statType, value);
+            else 
+                SetStat(statType, value);
         }
 
         public void AddUpgrade(StatsUpgrade upgrade)
@@ -27,18 +37,8 @@ namespace Stats
             {
                 // Adding to the Dictionary 
                 statsInfo[statUpgrade.statType] = (statsInfo.TryGetValue(statUpgrade.statType, out float currentValue) ? currentValue : 0) + statUpgrade.value;
-                
-                
-                // OBSERVER PATTERNS....
-                if (statUpgrade.statType == StatType.speed)
-                {
-                    OnSpeedUpgrade?.Invoke(statsInfo[statUpgrade.statType]);
-                    Debug.Log(OnSpeedUpgrade);
-                }
             }
-            //Debug.Log(statsInfo[StatType.speed]);
         }
-        public void SetSpeedByMultiply(float increaseConstant) => statsInfo[StatType.speed] *= increaseConstant; // 0 olma ihtimalini saap
         public float GetSpeed()
         {
             if (statsInfo.TryGetValue(StatType.speed, out var speedValue))
@@ -58,5 +58,9 @@ namespace Stats
                     : 1 - (characterAttackSpeedRate) / 100
                 : 1;
         }
+        
+        
+        public void SetStatByMultiply(StatType statType, float value) { statsInfo[statType] *= value; }
+        public void SetStat(StatType statType, float value) { statsInfo[statType] += value; }
     }
 }

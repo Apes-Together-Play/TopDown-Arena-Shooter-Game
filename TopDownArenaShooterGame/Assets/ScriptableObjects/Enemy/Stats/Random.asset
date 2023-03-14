@@ -17,5 +17,4 @@ MonoBehaviour:
   price: 0
   upgradeToApply:
   - statType: 12
-    value: 30
-  unitsToUpgrade: []
+    value: 5

@@ -12,4 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba4d148b63465d83997fddea0fa371, type: 3}
   m_Name: Wave
   m_EditorClassIdentifier: 
-  enemyTypeCounts: []
+  enemyTypeCounts:
+  - enemies:
+    - enemyPrefab: {fileID: 0}
+      number: 0
+    - enemyPrefab: {fileID: 0}
+      number: 0
+    - enemyPrefab: {fileID: 0}
+      number: 0
+    timeInMinutes: 234
+  - enemies:
+    - enemyPrefab: {fileID: 0}
+      number: 0
+    - enemyPrefab: {fileID: 0}
+      number: 0
+    - enemyPrefab: {fileID: 0}
+      number: 0
+    timeInMinutes: 0.2
+  - enemies:
+    - enemyPrefab: {fileID: 0}
+      number: 0
+    - enemyPrefab: {fileID: 0}
+      number: 0
+    - enemyPrefab: {fileID: 0}
+      number: 0
+    timeInMinutes: 0

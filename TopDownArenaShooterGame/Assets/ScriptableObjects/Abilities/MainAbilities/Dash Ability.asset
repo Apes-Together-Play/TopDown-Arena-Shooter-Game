@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   cooldownTime: 2
-  activeTime: 0.25
+  activeTime: 0.3
   statsToUpgrade:
   - statData:
       statType: 12

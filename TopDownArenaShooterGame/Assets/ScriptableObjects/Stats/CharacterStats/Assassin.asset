@@ -16,17 +16,17 @@ MonoBehaviour:
   description: Bak bir varim bir yokum..
   price: 0
   upgradeToApply:
-  - statType: 5
-    value: 20
   - statType: 6
+    value: 20
+  - statType: 7
     value: 25
-  - statType: 11
+  - statType: 12
     value: 1
-  - statType: 3
+  - statType: 4
     value: 10
   - statType: 0
     value: -25
-  - statType: 1
+  - statType: 2
     value: -2
-  - statType: 7
+  - statType: 8
     value: -3

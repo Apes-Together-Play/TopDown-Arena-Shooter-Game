@@ -58,9 +58,20 @@ namespace Stats
                     : 1 - (characterAttackSpeedRate) / 100
                 : 1;
         }
-        
-        
-        public void SetStatByMultiply(StatType statType, float value) { statsInfo[statType] *= value; }
-        public void SetStat(StatType statType, float value) { statsInfo[statType] += value; }
+
+
+        public void SetStatByMultiply(StatType statType, float value)
+        {
+            if (statsInfo.TryGetValue(statType, out var val))
+                statsInfo[statType] *= value;
+            else statsInfo[statType] = 0;
+        }
+
+        public void SetStat(StatType statType, float value)
+        {
+            if (statsInfo.TryGetValue(statType, out var val))
+                statsInfo[statType] += value;
+            else statsInfo[statType] = value;
+        }
     }
 }

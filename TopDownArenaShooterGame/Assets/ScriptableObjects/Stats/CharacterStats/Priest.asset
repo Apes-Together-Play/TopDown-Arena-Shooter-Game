@@ -18,13 +18,13 @@ MonoBehaviour:
   upgradeToApply:
   - statType: 14
     value: 20
-  - statType: 1
-    value: 2
-  - statType: 11
-    value: 1
-  - statType: 8
-    value: -5
-  - statType: 7
-    value: -3
   - statType: 2
+    value: 2
+  - statType: 12
+    value: 1
+  - statType: 9
+    value: -5
+  - statType: 8
+    value: -3
+  - statType: 3
     value: -10

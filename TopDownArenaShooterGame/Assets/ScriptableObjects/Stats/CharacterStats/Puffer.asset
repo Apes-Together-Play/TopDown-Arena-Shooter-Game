@@ -10,21 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1210d0d6e138489cb49b6907761fa37f, type: 3}
-  m_Name: Vampire
+  m_Name: Puffer
   m_EditorClassIdentifier: 
-  upgradeName: VampireBaseStats
-  description: "Ben sallama i\xE7iyorum"
+  upgradeName: PufferBaseStats
+  description: 
   price: 0
   upgradeToApply:
-  - statType: 5
-    value: 5
-  - statType: 12
+  - statType: 11
+    value: 25
+  - statType: 0
+    value: 25
+  - statType: 2
     value: 3
   - statType: 9
-    value: 10
-  - statType: 0
-    value: -50
-  - statType: 2
-    value: -3
+    value: 5
+  - statType: 8
+    value: 5
   - statType: 3
+    value: -20
+  - statType: 12
+    value: -4
+  - statType: 4
+    value: -10
+  - statType: 5
     value: -5

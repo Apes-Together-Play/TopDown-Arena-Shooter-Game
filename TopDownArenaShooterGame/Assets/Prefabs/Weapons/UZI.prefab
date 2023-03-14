@@ -134,7 +134,7 @@ MonoBehaviour:
   attackSpeed: 5
   sprRndGun: {fileID: 4757810044733150280}
   bullet: {fileID: 8003126324935838712, guid: 75ec2eca20143c74ab6a2da3c2bf8ca0, type: 3}
-  accuracy: {x: 0, y: 0}
+  accuracy: {x: 1, y: 1}
 --- !u!1 &8798217272818604326
 GameObject:
   m_ObjectHideFlags: 0

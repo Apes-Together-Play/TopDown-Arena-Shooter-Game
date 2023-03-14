@@ -206,7 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7329afc2413d4ff397cdd7a68c7422af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7.5
 --- !u!114 &4440963485515710352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,3 +219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHp: 100
+  movement: {fileID: 5844466558555548590}
+  statManager: {fileID: 11400000, guid: 6fecdf8f3691bab44b684a416f3f4b8b, type: 2}
+  baseEnemyStat: {fileID: 11400000, guid: a00f50781f5f09f49938146914251a6b, type: 2}

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Enemy.Controller;
+using UnityEngine;
 
 namespace Enemy.Movement
 {
@@ -12,6 +13,7 @@ namespace Enemy.Movement
         private new void Start()
         {
             base.Start();
+            var ec = GetComponent<EnemyController>();
             _targetTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         }
         
@@ -23,19 +25,19 @@ namespace Enemy.Movement
             if (distance.magnitude < noSpeedDist)
                 Rb2D.velocity = Vector2.zero;
             else
-                Rb2D.velocity = direction * speed;
+                Rb2D.velocity = direction * Speed;
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.gameObject.CompareTag("Player"))
-                speed *= slowNumber;
+                Speed *= slowNumber;
         }
 
         private void OnTriggerExit2D(Collider2D col)
         {
             if (col.gameObject.CompareTag("Player"))
-                speed /= slowNumber;
+                Speed /= slowNumber;
         }
     }
 }

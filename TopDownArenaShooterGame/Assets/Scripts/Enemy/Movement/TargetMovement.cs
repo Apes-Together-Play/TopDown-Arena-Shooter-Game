@@ -45,7 +45,7 @@ namespace Enemy.Movement
             switch (_state)
             { 
                 case MovementState.Look:
-                    Rb2D.velocity = _direction * speed;
+                    Rb2D.velocity = _direction * Speed;
                     distance = (_targetTransform.position - transform.position);
                     if (distance.magnitude < minDistance)
                     {

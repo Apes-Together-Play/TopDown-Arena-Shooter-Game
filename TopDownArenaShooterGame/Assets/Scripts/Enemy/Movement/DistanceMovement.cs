@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Enemy.Movement
 {
@@ -27,7 +26,7 @@ namespace Enemy.Movement
             else 
                 direction = Vector2.zero;
 
-            Rb2D.velocity = (direction)*speed;
+            Rb2D.velocity = (direction)*Speed;
         }
     }
 }

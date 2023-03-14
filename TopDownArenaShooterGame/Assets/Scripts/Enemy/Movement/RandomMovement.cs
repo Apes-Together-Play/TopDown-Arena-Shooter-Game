@@ -10,7 +10,7 @@ namespace Enemy.Movement
         
         protected override void Move()
         {
-            Rb2D.velocity = _direction * speed;
+            Rb2D.velocity = _direction * Speed;
         }
         
         

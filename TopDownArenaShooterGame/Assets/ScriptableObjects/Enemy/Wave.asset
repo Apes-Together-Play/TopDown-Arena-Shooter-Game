@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ba4d148b63465d83997fddea0fa371, type: 3}
+  m_Name: Wave
+  m_EditorClassIdentifier: 
+  enemyTypeCounts:
+  - enemies:
+    - enemyPrefab: {fileID: 2243956532677322955, guid: 790eb8e289b05944eb4fb17bd76d44f7, type: 3}
+      number: 10
+    - enemyPrefab: {fileID: -1582420260515229374, guid: 165abeada27ff484f89a9935b12cd8a5, type: 3}
+      number: 5
+    - enemyPrefab: {fileID: 4440963485515710352, guid: 6ccbc80ccb928514794744bfcaa76a09, type: 3}
+      number: 5
+    timeInMinutes: 0
+  - enemies:
+    - enemyPrefab: {fileID: -3862695723468595999, guid: 96bd7cfe9ee203d46b2c11de923d68cb, type: 3}
+      number: 10
+    - enemyPrefab: {fileID: 2243956532677322955, guid: 790eb8e289b05944eb4fb17bd76d44f7, type: 3}
+      number: 5
+    timeInMinutes: 0

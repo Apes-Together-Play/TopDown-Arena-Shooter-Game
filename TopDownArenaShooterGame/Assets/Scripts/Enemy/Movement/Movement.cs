@@ -5,7 +5,7 @@ namespace Enemy.Movement
     public abstract class Movement : MonoBehaviour
     {
         protected Rigidbody2D Rb2D;
-        [SerializeField] protected float speed;
+        public float Speed { protected get; set; }
 
         protected void Start()
         {

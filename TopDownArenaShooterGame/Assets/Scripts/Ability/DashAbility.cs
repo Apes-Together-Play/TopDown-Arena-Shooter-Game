@@ -7,9 +7,6 @@ namespace Ability
 {
     [CreateAssetMenu]
     public class DashAbility: Ability
-    /*
-     * aslinda calisiyor ama player controller daki move fonksiyonu bunu manuel overrideliyor, bunu duzeltmemiz lazim fakat ayni zamanda player controller a kod yazmamamiz lazim
-     */
     {
         [SerializeField] private float dashVelocity;
 

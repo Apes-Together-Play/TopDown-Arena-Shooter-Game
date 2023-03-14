@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Ability;
 using UnityEngine;
 
 namespace Stats
@@ -16,6 +17,7 @@ namespace Stats
         {
             statsInfo = new Dictionary<StatType, float>();
             appliedUpgrades = new List<StatsUpgrade>();
+            DashAbility.OnDashAbility += SetSpeedByMultiply;
         }
 
         public void AddUpgrade(StatsUpgrade upgrade)
@@ -36,13 +38,25 @@ namespace Stats
             }
             //Debug.Log(statsInfo[StatType.speed]);
         }
-
-        public float GetStats(StatType type)
+        public void SetSpeedByMultiply(float increaseConstant) => statsInfo[StatType.speed] *= increaseConstant; // 0 olma ihtimalini saap
+        public float GetSpeed()
         {
-            if(statsInfo.TryGetValue(type, out var value))
-                return value;
-
+            if (statsInfo.TryGetValue(StatType.speed, out var speedValue))
+            {
+                float speedPercentage = (statsInfo.TryGetValue(StatType.speedPercentage, out var value)) ? value : 0;
+                speedValue *= (speedPercentage > 0) ? (1 + speedPercentage / 100) :  1 / (1 - speedPercentage / 100); 
+                
+                return speedValue;
+            }
             return 0;
+        }
+        public float GetAttackSpeed()
+        {
+            return statsInfo.TryGetValue(StatType.attackSpeed, out var characterAttackSpeedRate)
+                ? (characterAttackSpeedRate > 0)
+                    ? 1 / (1 + characterAttackSpeedRate / 100)
+                    : 1 - (characterAttackSpeedRate) / 100
+                : 1;
         }
     }
 }

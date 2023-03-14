@@ -34,19 +34,19 @@ namespace Player
             rb2d = GetComponent<Rigidbody2D>();
             movement = new PlayerMovement(rb2d);
             weapons[_weaponIndex].gameObject.SetActive(true);
+            
 
             
-            LoadData();
-            statManager.OnSpeedUpgrade += movement.SetSpeed;
-            DashAbility.OnDashAbility += movement.SetSpeedByMultiply;
             StartCoroutine(Fire());
         }
 
         private void Update()
         {
-            movement.Move();
+            movement.Move(statManager.GetSpeed());
             ChangeWeapon();
             playerAnimation.FlipDude();
+            //rateStats.regen();
+            //rateStats.
         }
         
         private void LateUpdate()
@@ -56,10 +56,6 @@ namespace Player
             currentWeapon.Flip();
         }
 
-        private void LoadData()
-        {
-            movement.SetSpeed(statManager.GetStats(StatType.speed));
-        }
 
         private void ChangeWeapon()
         {
@@ -87,10 +83,8 @@ namespace Player
                     var currentWeapon = weapons[_weaponIndex];
                     currentWeapon.Shoot(); 
                     float cooldown = 1 / currentWeapon.AttackSpeed;
-
-                    float characterAttackSpeedRate = statManager.GetStats(StatType.attackSpeed);
                     
-                    cooldown *= (characterAttackSpeedRate > 0) ? 1 / (1 + characterAttackSpeedRate / 100) : 1 - (characterAttackSpeedRate) / 100; 
+                    cooldown *= statManager.GetAttackSpeed(); 
                     yield return new WaitForSeconds(cooldown);
                 }
 

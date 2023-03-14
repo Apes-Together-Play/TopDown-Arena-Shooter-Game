@@ -3,20 +3,21 @@
     public enum StatType
     {
         //todo this enum maybe change later
-        hp,
-        hpRegen,
-        damage,
-        attackSpeed,
-        lifeSteal,
-        criticChange,
-        criticDamage,
-        armor,
-        dodge,
-        knockback,
-        damageReflection,
-        speed,
-        luck,
-        harvesting, 
+        hp, // 100 at the beginning
+        hpRegen, // 1/5 * x^1/2
+        damage, // 0 at the beginning
+        attackSpeed, // silah cooldown'ini % li yapiyor + ve - olabilir
+        lifeSteal, // 
+        criticChange, // 
+        criticDamage, // 
+        armor, // +- 5 x^(1/2) -> upper bound 90;
+        dodge, // x  upper bound 60 
+        knockback, // 
+        damageReflection, // (0, oo)
+        speed, // herkeste base speed var bizim aldigimiz upgrade'ler
+        speedPercentage, // speed ile yuzdeli carpiliyor %100 2 kati hizli, -%100 iki kati yavas vs
+        luck, 
+        harvesting, // tur bitiminde para, duz sayi iste aq  
         
         
         hpRate,

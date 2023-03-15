@@ -13,8 +13,14 @@ namespace SceneController
         [SerializeField] private TextMeshProUGUI buffs;
         [SerializeField] private TextMeshProUGUI debuffs;
         
+        [SerializeField] private TextMeshProUGUI characterNameBack;
+        [SerializeField] private TextMeshProUGUI descriptionBack;
+        [SerializeField] private TextMeshProUGUI characterStory;
+
         [SerializeField] private Button button;
         [SerializeField] private GameObject card;
+        [SerializeField] private GameObject cardFront;
+        [SerializeField] private GameObject cardBack;
         [SerializeField] private StatManager playerStatManager;
         [SerializeField] private StatsUpgrade baseStat;
         
@@ -48,15 +54,36 @@ namespace SceneController
                 card.SetActive(true);
             
         }
+
+        public void LoadStory(Story story)
+        {
+            characterStory.text = story.story;
+        }
+
+        public void TurnCard()
+        {
+            if (cardFront.gameObject.activeInHierarchy)
+            {
+                cardBack.gameObject.SetActive(true);
+                cardFront.gameObject.SetActive(false);
+            }
+            else
+            {
+                cardBack.gameObject.SetActive(false);
+                cardFront.gameObject.SetActive(true);
+            }
+        }
         
         private void LoadName(string _name)
         {
             characterName.text = _name;
+            characterNameBack.text = _name;
         }
         
         private void LoadDescription(string _description)
         {
-            description.text = _description;
+            description.text = "\"" + _description + "\"";
+            descriptionBack.text = "\"" + _description + "\"";
         }
 
         private void LoadBuff(string type, float value)

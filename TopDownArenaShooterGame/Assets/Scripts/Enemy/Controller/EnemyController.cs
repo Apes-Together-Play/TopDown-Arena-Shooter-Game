@@ -32,6 +32,7 @@ namespace Enemy.Controller
             if (hp <= 0)
             {
                 Destroy(gameObject);
+                //TODO INVOKE AT KONUMLA BIRLIKTE
             }
         }
     }

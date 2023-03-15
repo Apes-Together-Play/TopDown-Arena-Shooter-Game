@@ -34,6 +34,8 @@
         damageReflectionRate,
         speedRate,
         luckRate,
-        harvestingRate
+        harvestingRate,
+        
+        money
     }
 }

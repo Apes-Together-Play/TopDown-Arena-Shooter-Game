@@ -59,6 +59,16 @@ namespace Stats
                 : 1;
         }
 
+        public float GetStats(StatType statType)
+        {
+            if (statsInfo.TryGetValue(statType, out var value))
+            {
+                return value;
+            }
+            return 0;
+
+        }
+
 
         public void SetStatByMultiply(StatType statType, float value)
         {
@@ -67,11 +77,14 @@ namespace Stats
             else statsInfo[statType] = 0;
         }
 
+        //todo set stat ismi degistir
         public void SetStat(StatType statType, float value)
         {
             if (statsInfo.TryGetValue(statType, out var val))
                 statsInfo[statType] += value;
             else statsInfo[statType] = value;
         }
+        
+        
     }
 }

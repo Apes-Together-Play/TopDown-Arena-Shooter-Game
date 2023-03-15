@@ -18,3 +18,5 @@ MonoBehaviour:
   upgradeToApply:
   - statType: 12
     value: 5
+  - statType: 30
+    value: 10

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Ability;
+using ObjectPooling.CoinSpawner;
 using Stats;
 using UnityEngine;
 using WeaponManager.Weapon;
@@ -19,6 +20,8 @@ namespace Player
         private Rigidbody2D rb2d;
         [SerializeField] private  StatManager statManager;
 
+        
+
         private void Awake()
         {
             //DontDestroyOnLoad(this);
@@ -27,6 +30,11 @@ namespace Player
             {
                weapon.gameObject.SetActive(false);
             }
+        }
+        
+        private void OnEnable()
+        {
+            Coin.OnCoinCollectEvent += CollectCoin;
         }
 
         private void Start()
@@ -86,6 +94,12 @@ namespace Player
 
                 yield return null;
             }
+        }
+
+        public void CollectCoin(Coin coin)
+        {
+            statManager.SetStat(StatType.money, coin.value);
+            Debug.Log(statManager.GetStats(StatType.money));
         }
         
         

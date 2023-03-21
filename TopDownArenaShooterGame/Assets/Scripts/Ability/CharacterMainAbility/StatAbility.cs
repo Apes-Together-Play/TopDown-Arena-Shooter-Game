@@ -13,7 +13,7 @@ namespace Ability.CharacterMainAbility
 
         
         public static event Action<StatType, float, UpgradeType> OnStatAbility;
-        public override void Active(GameObject parent)
+        public override void Active()
         {
             foreach (var statUpgrade in statsToUpgrade)
             {
@@ -21,7 +21,7 @@ namespace Ability.CharacterMainAbility
             }
         }
 
-        public override void DeActive(GameObject parent)
+        public override void DeActive()
         {
             foreach (var statUpgrade in statsToUpgrade)
             {

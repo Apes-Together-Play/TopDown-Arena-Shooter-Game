@@ -299,6 +299,7 @@ MonoBehaviour:
   cardFront: {fileID: 1289767149}
   cardBack: {fileID: 930494460}
   playerStatManager: {fileID: 11400000, guid: 737c246668ae1ed429dc743e31390c99, type: 2}
+  abilityManager: {fileID: 11400000, guid: 8ef012897a33a0843bef8a8259da4df0, type: 2}
   baseStat: {fileID: 11400000, guid: f2a6bde38c65b84439b27f57152a983c, type: 2}
 --- !u!4 &15677155
 Transform:
@@ -4383,6 +4384,42 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 879fbadfc03e0324aae5e1df0cc5a8a5, type: 2}
           m_ObjectArgumentAssemblyTypeName: Stats.Story, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 15677154}
+        m_TargetAssemblyTypeName: SceneController.CharacterSelectionManager, Assembly-CSharp
+        m_MethodName: LoadQAbility
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 4c00eedf280994e14b4276599a49689d, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Ability.Ability, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 15677154}
+        m_TargetAssemblyTypeName: SceneController.CharacterSelectionManager, Assembly-CSharp
+        m_MethodName: LoadEAbility
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 4c00eedf280994e14b4276599a49689d, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Ability.Ability, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 15677154}
+        m_TargetAssemblyTypeName: SceneController.CharacterSelectionManager, Assembly-CSharp
+        m_MethodName: LoadSpaceAbility
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 4c00eedf280994e14b4276599a49689d, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Ability.Ability, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

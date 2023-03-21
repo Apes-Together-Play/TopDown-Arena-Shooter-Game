@@ -8,8 +8,8 @@ namespace Ability
         public float cooldownTime;
         public float activeTime;
 
-        public abstract void Active(GameObject parent);
+        public abstract void Active();
 
-        public abstract void DeActive(GameObject parent);
+        public abstract void DeActive();
     }
 }

@@ -4,11 +4,11 @@ namespace Ability
 {
     public class AbilityHolder : MonoBehaviour
     {
-        [SerializeField] private Ability ability;
+        public Ability ability;
         private float _cooldownTime;
-        private float _acviteTime;
+        private float _activeTime;
         
-        [SerializeField] private KeyCode key;
+        public KeyCode key;
         
         enum AbilityState
         {
@@ -20,7 +20,7 @@ namespace Ability
 
         private AbilityState _state = AbilityState.ready;
 
-        private void Update()
+        public void StateTransition()
         {
             switch (_state)
             {
@@ -28,20 +28,20 @@ namespace Ability
                     if (Input.GetKeyDown(key))
                     {
                         
-                        ability.Active(gameObject);
+                        ability.Active();
                         _state = AbilityState.active;
-                        _acviteTime = ability.activeTime;
+                        _activeTime = ability.activeTime;
                     }
                     
                     break;
                 case AbilityState.active:
-                    if (_acviteTime > 0)
+                    if (_activeTime > 0)
                     {
-                        _acviteTime -= Time.deltaTime;
+                        _activeTime -= Time.deltaTime;
                     }
                     else
                     {
-                        ability.DeActive(gameObject);
+                        ability.DeActive();
                         _state = AbilityState.cooldown;
                         _cooldownTime = ability.cooldownTime;
                     }
@@ -58,7 +58,6 @@ namespace Ability
                     }
 
                     break;
-                    
             }
         }
     }

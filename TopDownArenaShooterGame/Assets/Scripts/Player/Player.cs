@@ -19,6 +19,7 @@ namespace Player
         private PlayerMovement movement; 
         private Rigidbody2D rb2d;
         [SerializeField] private  StatManager statManager;
+        [SerializeField] private AbilityManager abilityManager;
 
         
 
@@ -51,7 +52,16 @@ namespace Player
             movement.Move(statManager.GetSpeed());
             ChangeWeapon();
             playerAnimation.FlipDude();
+            ControlAbilities();
         }
+
+        private void ControlAbilities()
+        {
+            abilityManager.q.StateTransition();
+            abilityManager.e.StateTransition();
+            abilityManager.space.StateTransition();
+        }
+        
         
         private void LateUpdate()
         {

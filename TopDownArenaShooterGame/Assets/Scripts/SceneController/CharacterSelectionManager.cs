@@ -1,4 +1,6 @@
-﻿using Stats;
+﻿using System;
+using Ability;
+using Stats;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,8 +24,22 @@ namespace SceneController
         [SerializeField] private GameObject cardFront;
         [SerializeField] private GameObject cardBack;
         [SerializeField] private StatManager playerStatManager;
+        [SerializeField] private AbilityManager abilityManager;
         [SerializeField] private StatsUpgrade baseStat;
-        
+
+        private AbilityHolder _qHolder;
+        private AbilityHolder _eHolder;
+        private AbilityHolder _spaceHolder;
+
+        private void OnEnable()
+        {
+            _qHolder = gameObject.AddComponent<AbilityHolder>();
+            _qHolder.key = KeyCode.Q;
+            _eHolder = gameObject.AddComponent<AbilityHolder>();
+            _eHolder.key = KeyCode.E;
+            _spaceHolder = gameObject.AddComponent<AbilityHolder>();
+            _spaceHolder.key = KeyCode.Space;
+        }
         
         private StatsUpgrade _currentStatUpgrade;
 
@@ -52,7 +68,6 @@ namespace SceneController
                 button.gameObject.SetActive(true);
             if (!card.activeInHierarchy)
                 card.SetActive(true);
-            
         }
 
         public void LoadStory(Story story)
@@ -95,12 +110,29 @@ namespace SceneController
         {
             debuffs.text += $"{value} {type}\n";
         }
+
+        public void LoadQAbility(Ability.Ability q)
+        {
+            _qHolder.ability = q;
+        }
+        public void LoadEAbility(Ability.Ability e)
+        {
+            _eHolder.ability = e;
+        }
+
+        public void LoadSpaceAbility(Ability.Ability space)
+        {
+            _spaceHolder.ability = space;
+        }
         
         
         public void Play()
         {
             playerStatManager.AddUpgrade(baseStat);
             playerStatManager.AddUpgrade(_currentStatUpgrade);
+            abilityManager.q = _qHolder;
+            abilityManager.e = _eHolder;
+            abilityManager.space = _spaceHolder;
             SceneManager.LoadScene("GameScene");
         }
     }

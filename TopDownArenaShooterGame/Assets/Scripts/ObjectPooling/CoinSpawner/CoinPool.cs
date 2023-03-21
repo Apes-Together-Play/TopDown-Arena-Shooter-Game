@@ -12,7 +12,7 @@ namespace ObjectPooling.CoinSpawner
 
         private Vector3 _position = Vector3.zero;
         
-        [SerializeField] private float range= 0f;
+        [SerializeField] private float range;
 
         private void OnEnable()
         {

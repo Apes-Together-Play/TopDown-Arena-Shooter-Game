@@ -1,7 +1,4 @@
-﻿namespace DefaultNamespace
+﻿public interface IMortal
 {
-    public interface IMortal
-    {
-        public void TakeDamage();
-    }
+    public void TakeDamage();
 }

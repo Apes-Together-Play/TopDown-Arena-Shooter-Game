@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Ability;
 using ObjectPooling.CoinSpawner;
 using Stats;
@@ -11,37 +10,28 @@ namespace Player
     public class Player : MonoBehaviour
     {
         // HADI BISMILLAHIRRAHMANIRRAHIM
-        
+
         [SerializeField] private Weapon[] weapons;
         [SerializeField] private PlayerAnimation playerAnimation;
-        
-        private int _weaponIndex = 0;
-        private PlayerMovement movement; 
-        private Rigidbody2D rb2d;
-        [SerializeField] private  StatManager statManager;
+        [SerializeField] private StatManager statManager;
         [SerializeField] private AbilityManager abilityManager;
 
-        
+        private int _weaponIndex;
+        private PlayerMovement _movement;
+        private Rigidbody2D _rb2d;
+
 
         private void Awake()
         {
             //DontDestroyOnLoad(this);
             //Debug.Log(statManager.statsInfo[StatType.hp]);
-            foreach (var weapon in weapons)
-            {
-               weapon.gameObject.SetActive(false);
-            }
-        }
-        
-        private void OnEnable()
-        {
-            Coin.OnCoinCollectEvent += CollectCoin;
+            foreach (var weapon in weapons) weapon.gameObject.SetActive(false);
         }
 
         private void Start()
         {
-            rb2d = GetComponent<Rigidbody2D>();
-            movement = new PlayerMovement(rb2d);
+            _rb2d = GetComponent<Rigidbody2D>();
+            _movement = new PlayerMovement(_rb2d);
             weapons[_weaponIndex].gameObject.SetActive(true);
 
             StartCoroutine(Fire());
@@ -49,10 +39,23 @@ namespace Player
 
         private void Update()
         {
-            movement.Move(statManager.GetSpeed());
+            _movement.Move(statManager.GetSpeed());
             ChangeWeapon();
             playerAnimation.FlipDude();
             ControlAbilities();
+        }
+
+
+        private void LateUpdate()
+        {
+            var currentWeapon = weapons[_weaponIndex];
+            currentWeapon.RotateGun();
+            currentWeapon.Flip();
+        }
+
+        private void OnEnable()
+        {
+            Coin.OnCoinCollectEvent += CollectCoin;
         }
 
         private void ControlAbilities()
@@ -60,14 +63,6 @@ namespace Player
             abilityManager.q.StateTransition();
             abilityManager.e.StateTransition();
             abilityManager.space.StateTransition();
-        }
-        
-        
-        private void LateUpdate()
-        {
-            var currentWeapon = weapons[_weaponIndex];
-            currentWeapon.RotateGun();
-            currentWeapon.Flip();
         }
 
 
@@ -79,6 +74,7 @@ namespace Player
                 _weaponIndex = 0;
                 weapons[_weaponIndex].gameObject.SetActive(true);
             }
+
             if (Input.GetKeyDown("2"))
             {
                 weapons[_weaponIndex].gameObject.SetActive(false);
@@ -87,7 +83,7 @@ namespace Player
             }
         }
 
-        
+
         private IEnumerator Fire()
         {
             while (true)
@@ -95,10 +91,10 @@ namespace Player
                 if (Input.GetMouseButton(0))
                 {
                     var currentWeapon = weapons[_weaponIndex];
-                    currentWeapon.Shoot(); 
-                    float cooldown = 1 / currentWeapon.AttackSpeed;
-                    
-                    cooldown *= statManager.GetAttackSpeed(); 
+                    currentWeapon.Shoot();
+                    var cooldown = 1 / currentWeapon.AttackSpeed;
+
+                    cooldown *= statManager.GetAttackSpeed();
                     yield return new WaitForSeconds(cooldown);
                 }
 
@@ -108,10 +104,8 @@ namespace Player
 
         public void CollectCoin(Coin coin)
         {
-            statManager.SetStat(StatType.money, coin.value);
-            Debug.Log(statManager.GetStats(StatType.money));
+            statManager.SetStat(StatType.Money, coin.value);
+            Debug.Log(statManager.GetStats(StatType.Money));
         }
-        
-        
     }
 }

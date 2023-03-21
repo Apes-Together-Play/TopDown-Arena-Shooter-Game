@@ -19,7 +19,5 @@ namespace SceneController
         {
             Application.Quit();
         }
-        
-
     }
 }

@@ -1,24 +1,22 @@
-using System;
 using System.Collections.Generic;
-using Ability;
 using Ability.CharacterMainAbility;
 using UnityEngine;
 
 namespace Stats
 {
     [CreateAssetMenu(menuName = "Stat Manager")]
-    public class StatManager:ScriptableObject
+    public class StatManager : ScriptableObject
     {
-        private Dictionary<StatType, float> statsInfo;
-        private List<StatsUpgrade> appliedUpgrades;
+        private List<StatsUpgrade> _appliedUpgrades;
+        private Dictionary<StatType, float> _statsInfo;
 
-        
+
         public void OnEnable()
         {
-            statsInfo = new Dictionary<StatType, float>();
-            appliedUpgrades = new List<StatsUpgrade>();
-            
-            
+            _statsInfo = new Dictionary<StatType, float>();
+            _appliedUpgrades = new List<StatsUpgrade>();
+
+
             StatAbility.OnStatAbility += SetStatHelper;
         }
 
@@ -26,65 +24,62 @@ namespace Stats
         {
             if (upgradeType == UpgradeType.Multiply)
                 SetStatByMultiply(statType, value);
-            else 
+            else
                 SetStat(statType, value);
         }
 
         public void AddUpgrade(StatsUpgrade upgrade)
         {
-            appliedUpgrades.Add(upgrade);
+            _appliedUpgrades.Add(upgrade);
             foreach (var statUpgrade in upgrade.upgradeToApply)
-            {
                 // Adding to the Dictionary 
-                statsInfo[statUpgrade.statType] = (statsInfo.TryGetValue(statUpgrade.statType, out float currentValue) ? currentValue : 0) + statUpgrade.value;
-            }
+                _statsInfo[statUpgrade.statType] =
+                    (_statsInfo.TryGetValue(statUpgrade.statType, out var currentValue) ? currentValue : 0) +
+                    statUpgrade.value;
         }
+
         public float GetSpeed()
         {
-            if (statsInfo.TryGetValue(StatType.speed, out var speedValue))
+            if (_statsInfo.TryGetValue(StatType.Speed, out var speedValue))
             {
-                float speedPercentage = (statsInfo.TryGetValue(StatType.speedPercentage, out var value)) ? value : 0;
-                speedValue *= (speedPercentage > 0) ? (1 + speedPercentage / 100) :  1 / (1 - speedPercentage / 100); 
-                
+                var speedPercentage = _statsInfo.TryGetValue(StatType.SpeedPercentage, out var value) ? value : 0;
+                speedValue *= speedPercentage > 0 ? 1 + speedPercentage / 100 : 1 / (1 - speedPercentage / 100);
+
                 return speedValue;
             }
+
             return 0;
         }
+
         public float GetAttackSpeed()
         {
-            return statsInfo.TryGetValue(StatType.attackSpeed, out var characterAttackSpeedRate)
-                ? (characterAttackSpeedRate > 0)
+            return _statsInfo.TryGetValue(StatType.AttackSpeed, out var characterAttackSpeedRate)
+                ? characterAttackSpeedRate > 0
                     ? 1 / (1 + characterAttackSpeedRate / 100)
-                    : 1 - (characterAttackSpeedRate) / 100
+                    : 1 - characterAttackSpeedRate / 100
                 : 1;
         }
 
         public float GetStats(StatType statType)
         {
-            if (statsInfo.TryGetValue(statType, out var value))
-            {
-                return value;
-            }
+            if (_statsInfo.TryGetValue(statType, out var value)) return value;
             return 0;
-
         }
 
 
         public void SetStatByMultiply(StatType statType, float value)
         {
-            if (statsInfo.TryGetValue(statType, out var val))
-                statsInfo[statType] *= value;
-            else statsInfo[statType] = 0;
+            if (_statsInfo.TryGetValue(statType, out var val))
+                _statsInfo[statType] *= value;
+            else _statsInfo[statType] = 0;
         }
 
         //todo set stat ismi degistir
         public void SetStat(StatType statType, float value)
         {
-            if (statsInfo.TryGetValue(statType, out var val))
-                statsInfo[statType] += value;
-            else statsInfo[statType] = value;
+            if (_statsInfo.TryGetValue(statType, out var val))
+                _statsInfo[statType] += value;
+            else _statsInfo[statType] = value;
         }
-        
-        
     }
 }

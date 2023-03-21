@@ -2877,6 +2877,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 11400000, guid: 5fe9cdabeb67d8e4f8a7e5b1710ba882, type: 2}
+  spawnPositions:
+  - {x: 7.51, y: -4.49}
+  - {x: -10.41, y: 8.31}
+  - {x: -6.4, y: -9.24}
+  - {x: 8.28, y: 4.55}
+  circleRadius: 1.55
+  enemySpawnWaitingTime: 0.1
 --- !u!4 &1743385870
 Transform:
   m_ObjectHideFlags: 0

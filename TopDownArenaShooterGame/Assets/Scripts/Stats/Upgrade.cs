@@ -9,7 +9,7 @@ namespace Stats
 
         public string upgradeName;
         [SerializeField] private string description;
-        public string Description => description;
         public int price;
+        public string Description => description;
     }
 }

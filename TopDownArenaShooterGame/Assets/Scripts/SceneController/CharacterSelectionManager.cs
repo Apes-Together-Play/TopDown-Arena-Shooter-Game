@@ -1,5 +1,4 @@
-﻿using System;
-using Ability;
+﻿using Ability;
 using Stats;
 using TMPro;
 using UnityEngine;
@@ -14,7 +13,7 @@ namespace SceneController
         [SerializeField] private TextMeshProUGUI description;
         [SerializeField] private TextMeshProUGUI buffs;
         [SerializeField] private TextMeshProUGUI debuffs;
-        
+
         [SerializeField] private TextMeshProUGUI characterNameBack;
         [SerializeField] private TextMeshProUGUI descriptionBack;
         [SerializeField] private TextMeshProUGUI characterStory;
@@ -27,8 +26,10 @@ namespace SceneController
         [SerializeField] private AbilityManager abilityManager;
         [SerializeField] private StatsUpgrade baseStat;
 
-        private AbilityHolder _qHolder;
+        private StatsUpgrade _currentStatUpgrade;
         private AbilityHolder _eHolder;
+
+        private AbilityHolder _qHolder;
         private AbilityHolder _spaceHolder;
 
         private void OnEnable()
@@ -40,8 +41,6 @@ namespace SceneController
             _spaceHolder = gameObject.AddComponent<AbilityHolder>();
             _spaceHolder.key = KeyCode.Space;
         }
-        
-        private StatsUpgrade _currentStatUpgrade;
 
 
         public void Load(StatsUpgrade statsUpgrade)
@@ -52,18 +51,17 @@ namespace SceneController
 
             buffs.text = "";
             debuffs.text = "";
-            foreach (var stat in  statsUpgrade.upgradeToApply)
+            foreach (var stat in statsUpgrade.upgradeToApply)
             {
-                
-                string type = stat.statType.ToString();
-                float value = stat.value;
+                var type = stat.statType.ToString();
+                var value = stat.value;
 
-                if (stat.value > 0) 
+                if (stat.value > 0)
                     LoadBuff(type, value);
-                else 
+                else
                     LoadDebuff(type, value);
             }
-            
+
             if (!button.gameObject.activeInHierarchy)
                 button.gameObject.SetActive(true);
             if (!card.activeInHierarchy)
@@ -88,24 +86,24 @@ namespace SceneController
                 cardFront.gameObject.SetActive(true);
             }
         }
-        
-        private void LoadName(string _name)
+
+        private void LoadName(string name)
         {
-            characterName.text = _name;
-            characterNameBack.text = _name;
+            characterName.text = name;
+            characterNameBack.text = name;
         }
-        
-        private void LoadDescription(string _description)
+
+        private void LoadDescription(string description)
         {
-            description.text = "\"" + _description + "\"";
-            descriptionBack.text = "\"" + _description + "\"";
+            this.description.text = "\"" + description + "\"";
+            descriptionBack.text = "\"" + description + "\"";
         }
 
         private void LoadBuff(string type, float value)
         {
             buffs.text += $"+{value} {type}\n";
         }
-        
+
         private void LoadDebuff(string type, float value)
         {
             debuffs.text += $"{value} {type}\n";
@@ -115,6 +113,7 @@ namespace SceneController
         {
             _qHolder.ability = q;
         }
+
         public void LoadEAbility(Ability.Ability e)
         {
             _eHolder.ability = e;
@@ -124,8 +123,8 @@ namespace SceneController
         {
             _spaceHolder.ability = space;
         }
-        
-        
+
+
         public void Play()
         {
             playerStatManager.AddUpgrade(baseStat);

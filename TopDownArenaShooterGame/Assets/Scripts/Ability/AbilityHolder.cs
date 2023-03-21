@@ -5,36 +5,26 @@ namespace Ability
     public class AbilityHolder : MonoBehaviour
     {
         public Ability ability;
-        private float _cooldownTime;
-        private float _activeTime;
-        
         public KeyCode key;
-        
-        enum AbilityState
-        {
-            ready,
-            active,
-            cooldown
-        }
+        private float _activeTime;
+        private float _cooldownTime;
 
-
-        private AbilityState _state = AbilityState.ready;
+        private AbilityState _state = AbilityState.Ready;
 
         public void StateTransition()
         {
             switch (_state)
             {
-                case AbilityState.ready:
+                case AbilityState.Ready:
                     if (Input.GetKeyDown(key))
                     {
-                        
                         ability.Active();
-                        _state = AbilityState.active;
+                        _state = AbilityState.Active;
                         _activeTime = ability.activeTime;
                     }
-                    
+
                     break;
-                case AbilityState.active:
+                case AbilityState.Active:
                     if (_activeTime > 0)
                     {
                         _activeTime -= Time.deltaTime;
@@ -42,23 +32,26 @@ namespace Ability
                     else
                     {
                         ability.DeActive();
-                        _state = AbilityState.cooldown;
+                        _state = AbilityState.Cooldown;
                         _cooldownTime = ability.cooldownTime;
                     }
 
                     break;
-                case AbilityState.cooldown:
+                case AbilityState.Cooldown:
                     if (_cooldownTime > 0)
-                    {
                         _cooldownTime -= Time.deltaTime;
-                    }
                     else
-                    {
-                        _state = AbilityState.ready;
-                    }
+                        _state = AbilityState.Ready;
 
                     break;
             }
+        }
+
+        private enum AbilityState
+        {
+            Ready,
+            Active,
+            Cooldown
         }
     }
 }

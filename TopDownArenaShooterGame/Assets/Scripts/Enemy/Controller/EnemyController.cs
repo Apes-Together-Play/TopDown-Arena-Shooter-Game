@@ -1,5 +1,4 @@
 ﻿using System;
-using DefaultNamespace;
 using Stats;
 using UnityEngine;
 
@@ -9,33 +8,33 @@ namespace Enemy.Controller
     {
         [SerializeField] private float initialHp = 100f;
         [SerializeField] private Movement.Movement movement;
-        private StatManager statManager;
         [SerializeField] private StatsUpgrade baseEnemyStat;
-        
-        public static event Action<float, Vector3> OnDeadAction;
-        
-        private float hp;
+
+        private float _hp;
+        private StatManager _statManager;
 
         private void Awake()
         {
-            hp = initialHp;
-            statManager = ScriptableObject.CreateInstance<StatManager>();
-            statManager.AddUpgrade(baseEnemyStat);
+            _hp = initialHp;
+            _statManager = ScriptableObject.CreateInstance<StatManager>();
+            _statManager.AddUpgrade(baseEnemyStat);
         }
 
         private void Update()
         {
-            movement.Speed = statManager.GetSpeed();
+            movement.Speed = _statManager.GetSpeed();
         }
 
         public void TakeDamage()
         {
-            hp -= 10f;
-            if (hp <= 0)
+            _hp -= 10f;
+            if (_hp <= 0)
             {
-                OnDeadAction?.Invoke(statManager.GetStats(StatType.money), gameObject.transform.position);
+                OnDeadAction?.Invoke(_statManager.GetStats(StatType.Money), gameObject.transform.position);
                 Destroy(gameObject);
             }
         }
+
+        public static event Action<float, Vector3> OnDeadAction;
     }
 }

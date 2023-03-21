@@ -1,4 +1,3 @@
-using System.Data.Common;
 using Enemy.Controller;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ namespace ObjectPooling.CoinSpawner
             Coin.OnCoinCollectEvent += CoinCollect;
         }
 
-        
+
         public void SpawnCoin(float value, Vector3 position)
         {
             while (value >= goldCoinPool.coin.value)
@@ -24,7 +23,7 @@ namespace ObjectPooling.CoinSpawner
                 goldCoinPool.Spawn(position);
                 value -= goldCoinPool.coin.value;
             }
-            
+
             while (value >= silverCoinPool.coin.value)
             {
                 silverCoinPool.Spawn(position);
@@ -53,6 +52,5 @@ namespace ObjectPooling.CoinSpawner
                     break;
             }
         }
-        
     }
 }

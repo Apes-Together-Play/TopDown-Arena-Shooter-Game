@@ -4,19 +4,19 @@ namespace Player
 {
     public class PlayerMovement
     {
-        private readonly Rigidbody2D rb2d;
+        private readonly Rigidbody2D _rb2d;
 
         public PlayerMovement(Rigidbody2D rb2d)
         {
-            this.rb2d = rb2d;
+            this._rb2d = rb2d;
         }
 
         public void Move(float speed)
         {
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
+            var horizontal = Input.GetAxisRaw("Horizontal");
+            var vertical = Input.GetAxisRaw("Vertical");
             var movement = new Vector2(horizontal, vertical).normalized;
-            rb2d.velocity = movement * speed;
+            _rb2d.velocity = movement * speed;
         }
     }
 }

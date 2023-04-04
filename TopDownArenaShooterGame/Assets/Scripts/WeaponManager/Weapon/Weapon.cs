@@ -1,3 +1,4 @@
+using Stats;
 using UnityEngine;
 
 namespace WeaponManager.Weapon
@@ -12,7 +13,7 @@ namespace WeaponManager.Weapon
         private Vector2 _mousePos;
         public float AttackSpeed => attackSpeed;
 
-        public abstract void Shoot();
+        public abstract void Shoot(AttackStatHelper helper); // change it into a
 
         public void RotateGun()
         {

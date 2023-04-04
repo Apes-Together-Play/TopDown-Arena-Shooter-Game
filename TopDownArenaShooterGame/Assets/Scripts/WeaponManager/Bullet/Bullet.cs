@@ -1,3 +1,4 @@
+using Stats;
 using UnityEngine;
 
 namespace WeaponManager.Bullet
@@ -8,6 +9,8 @@ namespace WeaponManager.Bullet
 
         [SerializeField] protected Transform trnsBody;
 
+        public AttackStatHelper Helper;
+
         protected void Update()
         {
             Move();
@@ -16,5 +19,10 @@ namespace WeaponManager.Bullet
         protected abstract void Move();
 
         public abstract void Initialize(Vector2 targetRelativePosition);
+
+        public void SetHelper(AttackStatHelper helper)
+        {
+            Helper = helper;
+        }
     }
 }

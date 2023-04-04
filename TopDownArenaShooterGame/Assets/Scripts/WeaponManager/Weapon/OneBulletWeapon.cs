@@ -1,3 +1,4 @@
+using Stats;
 using UnityEngine;
 
 namespace WeaponManager.Weapon
@@ -9,7 +10,7 @@ namespace WeaponManager.Weapon
         [SerializeField] private Vector2 accuracy; //TODO can be changed not working so well
         private Vector2 _mouseRelativePosition;
 
-        public override void Shoot()
+        public override void Shoot(AttackStatHelper helper)
         {
             _mouseRelativePosition =
                 Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position; // TODO expensive method
@@ -18,6 +19,7 @@ namespace WeaponManager.Weapon
             _mouseRelativePosition.y += Random.Range(-accuracy.y, accuracy.y);
 
             var instantiatedBullet = Instantiate(bullet, trnsGunTip.position, Quaternion.identity);
+            instantiatedBullet.SetHelper(helper);
             instantiatedBullet.Initialize(_mouseRelativePosition);
         }
     }

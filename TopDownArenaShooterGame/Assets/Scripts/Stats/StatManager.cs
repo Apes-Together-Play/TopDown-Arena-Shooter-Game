@@ -60,6 +60,30 @@ namespace Stats
                 : 1;
         }
 
+        private float GetBaseDamage()
+        {
+            return _statsInfo.TryGetValue(StatType.Damage, out var characterDamage) 
+                ? (characterDamage > 1) 
+                    ? characterDamage 
+                    : 1 
+                : 1;
+        }
+
+        private float GetCriticalIncrease()
+        {
+            return _statsInfo.TryGetValue(StatType.CriticDamage, out var critDamage) 
+                ? critDamage > 100 
+                    ? critDamage / 100 
+                    : 1  
+                : 1;
+        }
+
+        public float GetDamage()
+        {
+            bool isCritical = GetStats(StatType.CriticChange) >= Random.Range(1, 100);
+            return isCritical ? GetBaseDamage() * GetCriticalIncrease() : GetBaseDamage();
+        }
+
         public float GetStats(StatType statType)
         {
             if (_statsInfo.TryGetValue(statType, out var value)) return value;

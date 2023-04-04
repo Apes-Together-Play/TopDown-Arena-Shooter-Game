@@ -1,3 +1,6 @@
+using System;
+using Interfaces;
+using Stats;
 using UnityEngine;
 
 namespace WeaponManager.Bullet
@@ -9,18 +12,31 @@ namespace WeaponManager.Bullet
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Wall"))
-            {
-                Destroy(gameObject);
-                return;
-            }
-
+            
+            //if (other.CompareTag("Wall"))
+            //{
+            //    Destroy(gameObject);
+            //    return;
+            //}
+            
             if (other.TryGetComponent(out IMortal mortal))
             {
                 mortal.TakeDamage();
                 Destroy(gameObject);
             }
+            
+            if (other.gameObject.TryGetComponent(out IKnockable knockable))
+            {
+                Vector2 direction = (other.transform.position - transform.position).normalized;
+                knockable.Knockback(Helper.Knockback, 2f ,direction, other.GetComponent<Rigidbody2D>());
+            }
+
+            if (other.gameObject.TryGetComponent(out IBulletEffecter effect))
+            {
+                effect.effectBullet(gameObject);
+            }
         }
+        
 
         protected override void Move()
         {

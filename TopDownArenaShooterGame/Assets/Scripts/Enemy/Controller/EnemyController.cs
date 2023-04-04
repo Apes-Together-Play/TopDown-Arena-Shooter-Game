@@ -1,15 +1,17 @@
 ﻿using System;
+using Interfaces;
 using Stats;
 using UnityEngine;
+using WeaponManager.Bullet;
 
 namespace Enemy.Controller
 {
-    public class EnemyController : MonoBehaviour, IMortal
+    public class EnemyController : MonoBehaviour, IMortal, IKnockable
     {
         [SerializeField] private float initialHp = 100f;
         [SerializeField] private Movement.Movement movement;
         [SerializeField] private StatsUpgrade baseEnemyStat;
-
+        
         private float _hp;
         private StatManager _statManager;
 
@@ -32,6 +34,16 @@ namespace Enemy.Controller
             {
                 OnDeadAction?.Invoke(_statManager.GetStats(StatType.Money), gameObject.transform.position);
                 Destroy(gameObject);
+            }
+        }
+
+        public void OnCollisionEnter2D(Collision2D other)
+        {
+            Debug.Log("direction = ");
+            if (TryGetComponent(out Bullet bullet))
+            {
+                Vector2 direction = (other.transform.position - transform.position).normalized;
+                ((IKnockable)this).Knockback(bullet.Helper.Knockback, 5f, direction, other.rigidbody);
             }
         }
 

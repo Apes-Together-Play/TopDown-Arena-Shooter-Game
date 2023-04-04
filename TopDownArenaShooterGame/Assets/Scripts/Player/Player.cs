@@ -91,7 +91,12 @@ namespace Player
                 if (Input.GetMouseButton(0))
                 {
                     var currentWeapon = weapons[_weaponIndex];
-                    currentWeapon.Shoot();
+                    
+                    AttackStatHelper helper = new AttackStatHelper(
+                        statManager.GetStats(StatType.Knockback), statManager.GetStats(StatType.LifeSteal), statManager.GetDamage()
+                        );
+                    
+                    currentWeapon.Shoot(helper);
                     var cooldown = 1 / currentWeapon.AttackSpeed;
 
                     cooldown *= statManager.GetAttackSpeed();

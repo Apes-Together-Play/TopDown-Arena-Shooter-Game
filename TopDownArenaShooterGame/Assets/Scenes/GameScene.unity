@@ -893,7 +893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127920122223623468, guid: 96bd7cfe9ee203d46b2c11de923d68cb, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4127920122223623468, guid: 96bd7cfe9ee203d46b2c11de923d68cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1196,7 +1196,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &545547748
 GameObject:
@@ -1815,6 +1815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mini Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 5783810252165037083, guid: 165abeada27ff484f89a9935b12cd8a5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 165abeada27ff484f89a9935b12cd8a5, type: 3}
 --- !u!1 &1008124487
@@ -2185,7 +2189,7 @@ Transform:
   m_Children:
   - {fileID: 1339602702}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1184051866
 MonoBehaviour:
@@ -2285,7 +2289,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1248032184
 MonoBehaviour:

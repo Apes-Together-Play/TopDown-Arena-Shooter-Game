@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 905374795889035453}
   - component: {fileID: 5783810252165037083}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: EnemyBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d5df3203d542d1adca708ee071c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   minDistance: 5
   lockTime: 1.5
   dashTime: 0.8
@@ -225,3 +224,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHp: 100
+  movement: {fileID: 1267214411526433198}
+  statManager: {fileID: 11400000, guid: 6fecdf8f3691bab44b684a416f3f4b8b, type: 2}
+  baseEnemyStat: {fileID: 11400000, guid: a00f50781f5f09f49938146914251a6b, type: 2}

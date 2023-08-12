@@ -1,28 +1,52 @@
 ﻿using System;
-using DefaultNamespace;
+using Interfaces;
 using Stats;
 using UnityEngine;
+using WeaponManager.Bullet;
 
 namespace Enemy.Controller
 {
-    public class EnemyController : MonoBehaviour, IMortal
+    public class EnemyController : MonoBehaviour, IMortal, IKnockable
     {
         [SerializeField] private float initialHp = 100f;
-
-        private float hp;
+        [SerializeField] private Movement.Movement movement;
+        [SerializeField] private StatsUpgrade baseEnemyStat;
+        
+        private float _hp;
+        private StatManager _statManager;
 
         private void Awake()
         {
-            hp = initialHp;
+            _hp = initialHp;
+            _statManager = ScriptableObject.CreateInstance<StatManager>();
+            _statManager.AddUpgrade(baseEnemyStat);
+        }
+
+        private void Update()
+        {
+            movement.Speed = _statManager.GetSpeed();
         }
 
         public void TakeDamage()
         {
-            hp -= 10f;
-            if (hp <= 0)
+            _hp -= 10f;
+            if (_hp <= 0)
             {
+                OnDeadAction?.Invoke(_statManager.GetStats(StatType.Money), gameObject.transform.position);
                 Destroy(gameObject);
             }
         }
+
+        public void OnCollisionEnter2D(Collision2D other)
+        {
+            Debug.Log("direction = ");
+            if (TryGetComponent(out Bullet bullet))
+            {
+                Vector2 direction = (other.transform.position - transform.position).normalized;
+                ((IKnockable)this).Knockback(bullet.Helper.Knockback, 5f, direction, other.rigidbody);
+            }
+        }
+
+        public static event Action<float, Vector3> OnDeadAction;
     }
 }

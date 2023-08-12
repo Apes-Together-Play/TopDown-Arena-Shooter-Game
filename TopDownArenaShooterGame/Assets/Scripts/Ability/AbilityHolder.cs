@@ -1,66 +1,57 @@
-using System;
 using UnityEngine;
 
 namespace Ability
 {
     public class AbilityHolder : MonoBehaviour
     {
-        [SerializeField] private Ability ability;
+        public Ability ability;
+        public KeyCode key;
+        private float _activeTime;
         private float _cooldownTime;
-        private float _acviteTime;
-        
-        [SerializeField] private KeyCode key;
-        
-        enum AbilityState
-        {
-            ready,
-            active,
-            cooldown
-        }
 
+        private AbilityState _state = AbilityState.Ready;
 
-        private AbilityState _state = AbilityState.ready;
-
-        private void Update()
+        public void StateTransition()
         {
             switch (_state)
             {
-                case AbilityState.ready:
+                case AbilityState.Ready:
                     if (Input.GetKeyDown(key))
                     {
-                        
-                        ability.Active(gameObject);
-                        _state = AbilityState.active;
-                        _acviteTime = ability.activeTime;
+                        ability.Active();
+                        _state = AbilityState.Active;
+                        _activeTime = ability.activeTime;
                     }
-                    
+
                     break;
-                case AbilityState.active:
-                    if (_acviteTime > 0)
+                case AbilityState.Active:
+                    if (_activeTime > 0)
                     {
-                        _acviteTime -= Time.deltaTime;
+                        _activeTime -= Time.deltaTime;
                     }
                     else
                     {
-                        ability.DeActive(gameObject);
-                        _state = AbilityState.cooldown;
+                        ability.DeActive();
+                        _state = AbilityState.Cooldown;
                         _cooldownTime = ability.cooldownTime;
                     }
 
                     break;
-                case AbilityState.cooldown:
+                case AbilityState.Cooldown:
                     if (_cooldownTime > 0)
-                    {
                         _cooldownTime -= Time.deltaTime;
-                    }
                     else
-                    {
-                        _state = AbilityState.ready;
-                    }
+                        _state = AbilityState.Ready;
 
                     break;
-                    
             }
+        }
+
+        private enum AbilityState
+        {
+            Ready,
+            Active,
+            Cooldown
         }
     }
 }

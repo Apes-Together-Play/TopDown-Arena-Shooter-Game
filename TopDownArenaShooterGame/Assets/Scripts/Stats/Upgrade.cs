@@ -8,10 +8,8 @@ namespace Stats
         //public Sprite icon {get; private set;}
 
         public string upgradeName;
-        public string Description { get; private set; }
-
+        [SerializeField] private string description;
         public int price;
-
-        public abstract void DoUpgrade();
+        public string Description => description;
     }
 }

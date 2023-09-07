@@ -31,10 +31,10 @@ namespace WeaponManager.Bullet
                 knockable.Knockback(Helper.Knockback, 2f ,direction, other.GetComponent<Rigidbody2D>());
             }
 
-            if (other.gameObject.TryGetComponent(out IBulletEffecter effect))
-            {
-                effect.effectBullet(gameObject);
-            }
+            //if (other.gameObject.TryGetComponent(out IBulletEffecter effect))
+            //{
+            //    effect.effectBullet(gameObject);
+            //}
         }
         
 

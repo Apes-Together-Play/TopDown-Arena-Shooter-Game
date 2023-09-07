@@ -26,14 +26,17 @@ namespace Enemy.Movement
         private float _currentStunTime;
         private Vector2 _distance;
 
-        protected new void Start()
+        private void Start()
         {
-            base.Start();
             ChangeDirection();
             _targetTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         }
-
-        protected void OnTriggerStay2D(Collider2D col)
+        
+        private void Update()
+        {
+            Move();
+        }
+        private void OnTriggerStay2D(Collider2D col)
         {
             if (col.gameObject.CompareTag("Wall"))
             {
@@ -51,12 +54,12 @@ namespace Enemy.Movement
         }
 
 
-        protected override void Move()
+        private void Move()
         {
             switch (_state)
             {
                 case MovementState.Look:
-                    Rb2D.velocity = _direction * Speed;
+                    Rigidbody.velocity = _direction * Speed;
                     _distance = _targetTransform.position - transform.position;
                     if (_distance.magnitude < minDistance)
                     {
@@ -68,7 +71,7 @@ namespace Enemy.Movement
                 case MovementState.Lock:
                     if (_currentLockedTime > 0)
                     {
-                        Rb2D.velocity = Vector2.zero;
+                        Rigidbody.velocity = Vector2.zero;
 
                         _currentLockedTime -= Time.deltaTime;
                     }
@@ -84,7 +87,7 @@ namespace Enemy.Movement
                 case MovementState.Dash:
                     if (_currentDashTime > 0)
                     {
-                        Rb2D.velocity = _direction * dashVelocity;
+                        Rigidbody.velocity = _direction * dashVelocity;
                         _currentDashTime -= Time.deltaTime;
                     }
                     else
@@ -98,7 +101,7 @@ namespace Enemy.Movement
                 case MovementState.Stun:
                     if (_currentStunTime > 0)
                     {
-                        Rb2D.velocity = Vector2.zero;
+                        Rigidbody.velocity = Vector2.zero;
                         _currentStunTime -= Time.deltaTime;
                     }
                     else

@@ -4,6 +4,7 @@ using ObjectPooling.CoinSpawner;
 using Stats;
 using UnityEngine;
 using WeaponManager.Weapon;
+using WeaponManager.Weapon.Base;
 
 namespace Player
 {
@@ -11,7 +12,7 @@ namespace Player
     {
         // HADI BISMILLAHIRRAHMANIRRAHIM
 
-        [SerializeField] private Weapon[] weapons;
+        [SerializeField] private BaseWeapon[] weapons;
         [SerializeField] private PlayerAnimation playerAnimation;
         [SerializeField] private StatManager statManager;
         [SerializeField] private AbilityManager abilityManager;

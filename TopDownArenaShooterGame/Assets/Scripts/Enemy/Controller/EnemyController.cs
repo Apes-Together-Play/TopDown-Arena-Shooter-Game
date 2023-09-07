@@ -3,6 +3,7 @@ using Interfaces;
 using Stats;
 using UnityEngine;
 using WeaponManager.Bullet;
+using WeaponManager.Bullet.Base;
 
 namespace Enemy.Controller
 {
@@ -40,7 +41,7 @@ namespace Enemy.Controller
         public void OnCollisionEnter2D(Collision2D other)
         {
             Debug.Log("direction = ");
-            if (TryGetComponent(out Bullet bullet))
+            if (TryGetComponent(out BaseBullet bullet))
             {
                 Vector2 direction = (other.transform.position - transform.position).normalized;
                 ((IKnockable)this).Knockback(bullet.Helper.Knockback, 5f, direction, other.rigidbody);

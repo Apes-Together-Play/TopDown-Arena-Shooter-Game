@@ -5,22 +5,26 @@ namespace Enemy.Movement
     public class RandomMovement : Movement
     {
         private Vector2 _direction;
-
-
-        private new void Start()
+        
+        private void Start()
         {
-            base.Start();
             ChangeDirection();
+        }
+        
+        private void Update()
+        {
+            Move();
         }
 
         protected void OnTriggerStay2D(Collider2D col)
         {
-            if (col.gameObject.CompareTag("Wall")) ChangeDirection();
+            if (col.gameObject.CompareTag("Wall")) 
+                ChangeDirection();
         }
 
-        protected override void Move()
+        private void Move()
         {
-            Rb2D.velocity = _direction * Speed;
+            Rigidbody.velocity = _direction * Speed;
         }
 
         private void ChangeDirection()

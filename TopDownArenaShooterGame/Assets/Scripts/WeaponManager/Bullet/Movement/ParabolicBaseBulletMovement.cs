@@ -1,10 +1,9 @@
-using Stats;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace WeaponManager.Bullet
 {
-    public class ParabolicBulletMovement : Bullet
+    public class ParabolicBaseBulletMovement : Base.BaseBullet
     {
         [Header("Movement")] [SerializeField] private float gravity;
 
@@ -16,14 +15,14 @@ namespace WeaponManager.Bullet
         private float _verticalVelocity;
 
 
-        protected new void Update()
+        protected  void Update()
         {
-            base.Update();
+            Move();
             CheckGroundHit();
         }
 
 
-        public override void Initialize(Vector2 targetRelativePosition)
+        public override void Fire(Vector2 targetRelativePosition)
         {
             var distance = targetRelativePosition.magnitude;
             _isGrounded = false;
@@ -31,7 +30,7 @@ namespace WeaponManager.Bullet
             _verticalVelocity = -(gravity / 2) * time;
         }
 
-        protected override void Move()
+        private void Move()
         {
             if (!_isGrounded)
             {

@@ -6,28 +6,27 @@ namespace Enemy.Movement
     {
         [SerializeField] private float minDistance;
         [SerializeField] private float maxDistance;
+        
+        private Transform _target;
 
-        private Transform _targetTransform;
-
-        protected new void Start()
+        private void Start()
         {
-            base.Start();
-            _targetTransform = _targetTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         }
-
-        protected override void Move()
+        
+        private void Update()
         {
             Vector2 direction;
-            var distance = Vector2.Distance(transform.position, _targetTransform.transform.position);
+            var distance = Vector2.Distance(transform.position, _target.position);
 
             if (distance <= minDistance)
-                direction = (transform.position - _targetTransform.position).normalized;
+                direction = (transform.position - _target.position).normalized;
             else if (distance >= maxDistance)
-                direction = (_targetTransform.position - transform.position).normalized;
+                direction = (_target.position - transform.position).normalized;
             else
                 direction = Vector2.zero;
 
-            Rb2D.velocity = direction * Speed;
+            Rigidbody.velocity = direction * Speed;
         }
     }
 }

@@ -4,19 +4,11 @@ namespace Enemy.Movement
 {
     public abstract class Movement : MonoBehaviour
     {
-        protected Rigidbody2D Rb2D;
+        private Rigidbody2D _rigidbody;
+        protected Rigidbody2D Rigidbody => 
+            _rigidbody == null ? GetComponent<Rigidbody2D>() : _rigidbody = GetComponent<Rigidbody2D>();
+        
         public float Speed { protected get; set; }
-
-        protected void Start()
-        {
-            Rb2D = GetComponent<Rigidbody2D>();
-        }
-
-        private void Update()
-        {
-            Move();
-        }
-
-        protected abstract void Move();
+        
     }
 }

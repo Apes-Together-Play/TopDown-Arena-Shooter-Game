@@ -1,24 +1,17 @@
 using Stats;
 using UnityEngine;
 
-namespace WeaponManager.Bullet
+namespace WeaponManager.Bullet.Base
 {
-    public abstract class Bullet : MonoBehaviour
+    public abstract class BaseBullet : MonoBehaviour
     {
         [Header("Objects")] [SerializeField] protected Transform trnsObject;
 
         [SerializeField] protected Transform trnsBody;
 
         public AttackStatHelper Helper;
-
-        protected void Update()
-        {
-            Move();
-        }
-
-        protected abstract void Move();
-
-        public abstract void Initialize(Vector2 targetRelativePosition);
+        
+        public abstract void Fire(Vector2 targetRelativePosition);
 
         public void SetHelper(AttackStatHelper helper)
         {

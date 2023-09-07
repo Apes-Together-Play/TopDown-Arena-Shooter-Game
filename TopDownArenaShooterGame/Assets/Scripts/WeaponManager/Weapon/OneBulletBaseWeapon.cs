@@ -1,12 +1,14 @@
 using Stats;
 using UnityEngine;
+using UnityEngine.Serialization;
+using WeaponManager.Weapon.Base;
 
 namespace WeaponManager.Weapon
 {
     //TODO ismini degistir
-    public class OneBulletWeapon : Weapon
+    public class OneBulletBaseWeapon : BaseWeapon
     {
-        [SerializeField] private Bullet.Bullet bullet;
+        [FormerlySerializedAs("bullet")] [SerializeField] private Bullet.Base.BaseBullet baseBullet;
         [SerializeField] private Vector2 accuracy; //TODO can be changed not working so well
         private Vector2 _mouseRelativePosition;
 
@@ -18,9 +20,9 @@ namespace WeaponManager.Weapon
             _mouseRelativePosition.x += Random.Range(-accuracy.x, accuracy.x);
             _mouseRelativePosition.y += Random.Range(-accuracy.y, accuracy.y);
 
-            var instantiatedBullet = Instantiate(bullet, trnsGunTip.position, Quaternion.identity);
+            var instantiatedBullet = Instantiate(baseBullet, trnsGunTip.position, Quaternion.identity);
             instantiatedBullet.SetHelper(helper);
-            instantiatedBullet.Initialize(_mouseRelativePosition);
+            instantiatedBullet.Fire(_mouseRelativePosition);
         }
     }
 }

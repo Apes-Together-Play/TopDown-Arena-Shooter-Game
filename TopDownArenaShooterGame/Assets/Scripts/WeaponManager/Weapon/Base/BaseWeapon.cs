@@ -1,9 +1,9 @@
 using Stats;
 using UnityEngine;
 
-namespace WeaponManager.Weapon
+namespace WeaponManager.Weapon.Base
 {
-    public abstract class Weapon : MonoBehaviour
+    public abstract class BaseWeapon : MonoBehaviour
     {
         [SerializeField] protected Transform trnsGunTip;
         [SerializeField] protected Transform trnsGun;

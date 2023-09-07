@@ -1,11 +1,9 @@
-using System;
 using Interfaces;
-using Stats;
 using UnityEngine;
 
-namespace WeaponManager.Bullet
+namespace WeaponManager.Bullet.Movement
 {
-    public class LinearBulletMovement : Bullet
+    public class LinearBaseBulletMovement : Base.BaseBullet
     {
         [SerializeField] private float velocity;
         private Vector2 _direction;
@@ -36,14 +34,13 @@ namespace WeaponManager.Bullet
             //    effect.effectBullet(gameObject);
             //}
         }
-        
 
-        protected override void Move()
+        private void Update()
         {
             transform.position += (Vector3)(_direction * velocity) * Time.deltaTime;
         }
-
-        public override void Initialize(Vector2 targetRelativePosition)
+        
+        public override void Fire(Vector2 targetRelativePosition)
         {
             _direction = targetRelativePosition.normalized;
 

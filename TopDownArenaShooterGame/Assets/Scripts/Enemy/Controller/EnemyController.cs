@@ -1,6 +1,6 @@
 ﻿using System;
 using Interfaces;
-using Stats;
+using OldStats;
 using UnityEngine;
 using WeaponManager.Bullet;
 using WeaponManager.Bullet.Base;

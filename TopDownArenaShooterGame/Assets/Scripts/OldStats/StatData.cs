@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Stats
+namespace OldStats
 {
     [Serializable]
     public record StatData

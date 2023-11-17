@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Stats
+namespace OldStats
 {
     [CreateAssetMenu(menuName = "Upgrade")]
     public abstract class Upgrade : ScriptableObject

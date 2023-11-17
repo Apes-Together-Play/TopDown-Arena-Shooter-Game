@@ -1,4 +1,4 @@
-using Stats;
+using OldStats;
 using UnityEngine;
 using UnityEngine.Serialization;
 using WeaponManager.Weapon.Base;

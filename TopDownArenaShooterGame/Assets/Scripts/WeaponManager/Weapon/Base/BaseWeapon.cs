@@ -1,4 +1,4 @@
-using Stats;
+using OldStats;
 using UnityEngine;
 
 namespace WeaponManager.Weapon.Base

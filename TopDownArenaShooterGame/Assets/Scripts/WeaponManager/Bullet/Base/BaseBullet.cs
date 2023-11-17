@@ -1,9 +1,9 @@
-using Stats;
+using OldStats;
 using UnityEngine;
 
 namespace WeaponManager.Bullet.Base
 {
-    public abstract class BaseBullet : MonoBehaviour
+    public abstract class BaseBullet : MonoBehaviour, IDamageGiver
     {
         [Header("Objects")] [SerializeField] protected Transform trnsObject;
 
@@ -16,6 +16,11 @@ namespace WeaponManager.Bullet.Base
         public void SetHelper(AttackStatHelper helper)
         {
             Helper = helper;
+        }
+
+        public void GiveDamage(IDamageTaker taker)
+        {
+            taker.TakeDamage(this);
         }
     }
 }

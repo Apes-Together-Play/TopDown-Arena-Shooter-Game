@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Stats;
+using OldStats;
 using UnityEngine;
 
 namespace Ability.CharacterMainAbility

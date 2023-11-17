@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Stats
+namespace OldStats
 {
     [CreateAssetMenu(menuName = "Story")]
     public class Story : ScriptableObject

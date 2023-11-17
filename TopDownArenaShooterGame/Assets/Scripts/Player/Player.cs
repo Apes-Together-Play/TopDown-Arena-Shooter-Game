@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using Ability;
+using Features.Health;
 using ObjectPooling.CoinSpawner;
-using Stats;
+using OldStats;
 using UnityEngine;
 using WeaponManager.Weapon;
 using WeaponManager.Weapon.Base;
@@ -16,6 +17,7 @@ namespace Player
         [SerializeField] private PlayerAnimation playerAnimation;
         [SerializeField] private StatManager statManager;
         [SerializeField] private AbilityManager abilityManager;
+        [SerializeField] private HealthController controller;
 
         private int _weaponIndex;
         private PlayerMovement _movement;
@@ -84,6 +86,10 @@ namespace Player
             }
         }
 
+        public void TakeDamage(float damage)
+        {
+            controller.Damage(damage);
+        }
 
         private IEnumerator Fire()
         {

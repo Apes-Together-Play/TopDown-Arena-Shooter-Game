@@ -1,6 +1,4 @@
-using System.Collections.Generic;
-
-namespace Stats
+namespace OldStats
 {
     public struct AttackStatHelper
     {

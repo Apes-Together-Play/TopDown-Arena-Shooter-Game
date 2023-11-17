@@ -2,8 +2,7 @@
 
 namespace Enemy.Enemies
 {
-    public class RedEnemy : EnemyBase
+    public class RedMob : EnemyBase
     {
-        
     }
 }

@@ -1,4 +1,4 @@
-namespace Stats
+namespace OldStats
 {
     public enum UpgradeType
     {

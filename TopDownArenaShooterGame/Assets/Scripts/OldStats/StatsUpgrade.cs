@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Stats
+namespace OldStats
 {
     [CreateAssetMenu(menuName = "Upgrade")]
     public class StatsUpgrade : Upgrade

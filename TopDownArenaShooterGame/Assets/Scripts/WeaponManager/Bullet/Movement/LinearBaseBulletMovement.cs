@@ -1,5 +1,7 @@
+using GameMechanicObjects;
 using Interfaces;
 using UnityEngine;
+using WeaponManager.Bullet.Base;
 
 namespace WeaponManager.Bullet.Movement
 {
@@ -10,29 +12,11 @@ namespace WeaponManager.Bullet.Movement
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            
-            //if (other.CompareTag("Wall"))
-            //{
-            //    Destroy(gameObject);
-            //    return;
-            //}
-            
-            if (other.TryGetComponent(out IMortal mortal))
+            var bulletData = new BulletData() {Speed = 10f};
+            if(other.TryGetComponent(out IBulletHandler handler))
             {
-                mortal.TakeDamage();
-                Destroy(gameObject);
+                handler.HandleBullet(bulletData);
             }
-            
-            if (other.gameObject.TryGetComponent(out IKnockable knockable))
-            {
-                Vector2 direction = (other.transform.position - transform.position).normalized;
-                knockable.Knockback(Helper.Knockback, 2f ,direction, other.GetComponent<Rigidbody2D>());
-            }
-
-            //if (other.gameObject.TryGetComponent(out IBulletEffecter effect))
-            //{
-            //    effect.effectBullet(gameObject);
-            //}
         }
 
         private void Update()

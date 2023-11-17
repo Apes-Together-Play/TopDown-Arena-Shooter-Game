@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Ability.CharacterMainAbility;
 using UnityEngine;
 
-namespace Stats
+namespace OldStats
 {
     [CreateAssetMenu(menuName = "Stat Manager")]
     public class StatManager : ScriptableObject

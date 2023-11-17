@@ -1,5 +1,5 @@
 ﻿using Ability;
-using Stats;
+using OldStats;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
